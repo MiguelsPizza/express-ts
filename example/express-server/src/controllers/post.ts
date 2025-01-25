@@ -1,6 +1,6 @@
+import { TypedRouter } from "@typed-router/router";
 import type { PostDocument } from "@typed-router/shared-lib/model-types";
 import type { JSONSerialized } from "mongoose";
-import { TypedRouter } from "@typed-router/router";
 
 import { Post } from "../models/post";
 
@@ -16,3 +16,5 @@ const postRouter = new TypedRouter()
   });
 
 export default postRouter;
+
+export type PostRouter = typeof postRouter

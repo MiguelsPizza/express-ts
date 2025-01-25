@@ -1,9 +1,11 @@
+import { createAPIClient } from "@typed-router/client"
+import { PostRouter } from "@typed-router/express-server/post"
 import axios from 'redaxios'
-
-
+import axiosInstance from "../axiosInstance"
 
 export class PostNotFoundError extends Error { }
 
+const postsClient = createAPIClient<PostRouter, typeof axiosInstance>(axiosInstance)
 export const fetchPost = async (postId: string) => {
   console.info(`Fetching post with id ${postId}...`)
   const post = await axios

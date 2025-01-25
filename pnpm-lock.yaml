@@ -301,9 +301,6 @@ importers:
       '@typed-router/router':
         specifier: workspace:*
         version: link:../router
-      axios:
-        specifier: ^1.7.9
-        version: 1.7.9
       express:
         specifier: ^5.0.0
         version: 5.0.1
@@ -329,12 +326,18 @@ importers:
       '@types/node':
         specifier: 'catalog:'
         version: 22.10.10
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@2.4.2)
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
+      redaxios:
+        specifier: ^0.5.1
+        version: 0.5.1
       rimraf:
         specifier: ^5.0.5
         version: 5.0.10

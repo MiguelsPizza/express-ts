@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["server.ts"],
+  entry: ["./src/index.ts"],
   format: ["cjs"],
   target: "node2023",
   platform: "node",

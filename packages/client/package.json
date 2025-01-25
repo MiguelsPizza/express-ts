@@ -55,14 +55,15 @@
     "prettier": "catalog:",
     "rimraf": "^5.0.5",
     "tsup": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "redaxios": "^0.5.1",
+    "axios": "^1.7.9"
   },
   "prettier": "@typed-router/prettier-config",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "axios": "^1.7.9",
     "@typed-router/router": "workspace:*"
   }
 }

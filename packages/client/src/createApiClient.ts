@@ -1,9 +1,12 @@
 import type { HttpMethod, TypedRouter } from "@typed-router/router";
+import { AxiosInstance } from "axios";
+import axiosLight from "redaxios";
 import type { AllRoutes, MapRoutesToClient } from "./types";
-import type { AxiosInstance } from "axios";
+const test = axiosLight.i
+type RedaxiosInstance = ReturnType<typeof axiosLight['create']>
 
-function createAPIClient<T extends TypedRouter<any>, A extends AxiosInstance>(
-  apiInstance: A,
+export function createAPIClient<T extends TypedRouter<any>>(
+  apiInstance: AxiosInstance | RedaxiosInstance,
 ): MapRoutesToClient<AllRoutes<T>> {
   return createProxy([]);
 

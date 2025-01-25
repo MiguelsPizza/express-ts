@@ -2,10 +2,10 @@
   "name": "@typed-router/express-server",
   "version": "1.0.0",
   "private": true,
-  "main": "server.js",
+  "main": "./src/index.ts",
   "exports": {
-    ".": {
-      "default": "./src/routes/apiRoutes.ts"
+    "./post": {
+      "default": "./src/controllers/post.ts"
     }
   },
   "scripts": {

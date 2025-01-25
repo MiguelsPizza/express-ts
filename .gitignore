@@ -85,3 +85,4 @@ packages/types/node_modules/.bin
 apps/server/.env
 apps/server/node_modules
 tooling/prettier/dist
+example/react-spa/node_modules
