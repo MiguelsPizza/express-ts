@@ -1,0 +1,34 @@
+{
+  "name": "@typed-router/shared-lib",
+  "private": true,
+  "version": "0.1.0",
+  "exports": {
+    "./model-types": {
+      "default": "./src/types/model-types/mongoose.gen.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc --watch",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "generateTypes": "pnpm mtgen --config ./mtgen.config.json"
+  },
+  "dependencies": {
+    "mongoose": "latest"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "catalog:",
+    "@typed-router/eslint-config": "workspace:*",
+    "@typed-router/prettier-config": "workspace:*",
+    "@typed-router/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "mongoose-tsgen": "^9.5.1",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@typed-router/prettier-config"
+}

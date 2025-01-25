@@ -1,0 +1,12 @@
+{
+  "name": "@typed-router/tsconfig",
+  "private": true,
+  "version": "0.1.0",
+  "files": [
+    "*.json"
+  ],
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "catalog:",
+    "@types/node": "catalog:"
+  }
+}

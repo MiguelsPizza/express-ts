@@ -1,0 +1,9 @@
+{
+  "extends": "@typed-router/tsconfig/internal-package.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declarationMap": true
+  },
+  "include": ["src", "scripts", "eslint.config.ts"],
+  "exclude": ["node_modules"]
+}

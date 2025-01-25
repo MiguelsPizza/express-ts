@@ -1,0 +1,64 @@
+{
+  "name": "@typed-router/router",
+  "version": "0.1.0",
+  "description": "Type-safe Express router with Hono-style type inference",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./src/index.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "express",
+    "router",
+    "typescript",
+    "type-safe",
+    "hono"
+  ],
+  "author": "Alex Nahas",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typed-router/typed-router"
+  },
+  "peerDependencies": {
+    "express": "^5.0.0"
+  },
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "catalog:",
+    "@typed-router/eslint-config": "workspace:*",
+    "@typed-router/prettier-config": "workspace:*",
+    "@typed-router/tsconfig": "workspace:*",
+    "@types/express": "^5.0.0",
+    "@types/express-serve-static-core": "^5.0.1",
+    "@types/node": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "rimraf": "^5.0.5",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@typed-router/prettier-config",
+  "publishConfig": {
+    "access": "public"
+  }
+}

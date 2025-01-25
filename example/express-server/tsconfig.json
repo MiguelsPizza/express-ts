@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "lib": ["ESNext"],
+    "esModuleInterop": true,
+    "target": "ESNext",
+    "allowSyntheticDefaultImports": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "noUncheckedIndexedAccess": false,
+    "jsx": "react",
+    "module": "Preserve",
+    // Add these performance-focused options
+    "incremental": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "composite": true,
+
+    // Disable expensive checks
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+
+    // Use faster module resolution
+    "moduleResolution": "bundler",
+
+    // Reduce type checking strictness for performance
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+
+    // Remove if not needed for your project
+    "sourceMap": false
+  },
+
+  "include": ["server.ts", "src/**/*.ts", "src/**/*.tsx", "global.d.ts"],
+  "exclude": [
+    "@typed-router/auth",
+    "node_modules",
+    "**/node_modules/*",
+    "dist",
+    "**/dist/*",
+    "**/build/*",
+    "**/coverage/*",
+    "**/temp/*",
+    "**/tmp/*",
+    "**/.cache/*",
+    "**/.next/*",
+    "**/.nuxt/*",
+    "**/.vuepress/dist/*",
+    "**/.docusaurus/*",
+    "**/public/*",
+    "**/out/*",
+    "**/output/*",
+    "**/vendor/*"
+  ]
+}

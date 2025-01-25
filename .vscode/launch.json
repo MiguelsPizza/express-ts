@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Express",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/example/express-server/src/index.ts",
+      "cwd": "${workspaceFolder}/apps/server",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true
+    }
+  ]
+}
