@@ -1,13 +1,14 @@
-import type {AxiosInstance} from 'axios';
-
-import type {HttpMethod, TypedRouter} from "@typed-router/router";
+import type { HttpMethod, TypedRouter } from "@typed-router/router";
 import type { AllRoutes, MapRoutesToClient } from "./types";
+import type { AxiosInstance } from "axios";
 
-function createAPIClient<T extends TypedRouter<any>, A extends AxiosInstance>(apiInstance: A): MapRoutesToClient<AllRoutes<T>> {
+function createAPIClient<T extends TypedRouter<any>, A extends AxiosInstance>(
+  apiInstance: A,
+): MapRoutesToClient<AllRoutes<T>> {
   return createProxy([]);
 
   function createProxy(pathParts: string[]): any {
-    return new Proxy(() => { }, {
+    return new Proxy(() => {}, {
       get(target, prop: string) {
         return createProxy([...pathParts, prop.toString()]);
       },
@@ -16,19 +17,19 @@ function createAPIClient<T extends TypedRouter<any>, A extends AxiosInstance>(ap
 
         // Extract the method (get, post, etc.)
         const method = pathParts[pathParts.length - 1];
-        const methods: HttpMethod[] = ['get', 'post', 'put', 'delete', 'patch'];
+        const methods: HttpMethod[] = ["get", "post", "put", "delete", "patch"];
 
         if (methods.includes(method as HttpMethod)) {
           // Replace path parameters with actual values
           const pathWithParams = pathParts.slice(0, -1).map((part) => {
-            if (part.startsWith(':') && args?.params) {
+            if (part.startsWith(":") && args?.params) {
               const paramName = part.slice(1);
               return args.params[paramName];
             }
             return part;
           });
 
-          const fullPath = `/${pathWithParams.join('/')}`;
+          const fullPath = `/${pathWithParams.join("/")}`;
 
           return apiInstance
             .request({

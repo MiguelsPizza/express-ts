@@ -1,11 +1,11 @@
-import { defineConfig, devices } from "@playwright/test";
-import dotenv from 'dotenv';
 import path from "path";
+import { defineConfig, devices } from "@playwright/test";
+import dotenv from "dotenv";
 
-dotenv.config({ path: path.join(__dirname, '.env') });
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 export default defineConfig({
-  globalSetup: require.resolve('./global-setup'),
+  globalSetup: require.resolve("./global-setup"),
   testDir: "././",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -36,20 +36,22 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: process.env.PLAT === "win" ? "npx turbo dev:test:win": "npx turbo dev:test",
+      command: process.env.PLAT === "win" ? "npx turbo dev:test:win" : "npx turbo dev:test",
       cwd: path.join(__dirname, "../apps/server"),
       port: 3001,
       reuseExistingServer: true,
       timeout: 120000,
-      stdout: 'pipe',
-      stderr: 'pipe'
-    }, {
+      stdout: "pipe",
+      stderr: "pipe",
+    },
+    {
       command: "npx turbo build && npx pnpm preview",
       port: 4173, // both wait on the server port because it takes longer
       reuseExistingServer: true,
       cwd: path.join(__dirname, "../apps/interface"),
       timeout: 120000, // 2 minutes
-      stdout: 'pipe',
-      stderr: 'pipe'
-    },],
+      stdout: "pipe",
+      stderr: "pipe",
+    },
+  ],
 });

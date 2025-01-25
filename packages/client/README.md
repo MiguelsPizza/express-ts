@@ -43,11 +43,12 @@ MIT
 
 ## Roadmap
 
-* Add native fetch support
-  * at the moment the client requires axios as it's underling api client. That does not need to be the case and add this api could very need zero deps
-  * for now I suggest using [redaxios](https://www.npmjs.com/package/redaxios/v/0.1.0?activeTab=readme) if you do not want to bring in fetch
-* Improve typing and empty params
-  * as of now, listing never in the router type does not play well with the generated client.
+- Add native fetch support
+  - at the moment the client requires axios as it's underling api client. That does not need to be the case and add this api could very need zero deps
+  - for now I suggest using [redaxios](https://www.npmjs.com/package/redaxios/v/0.1.0?activeTab=readme) if you do not want to bring in fetch
+- Improve typing and empty params
 
-* Add compatiablity for honoClient.
-  * hono has already solved most of the problems this client aims to solve. We would use the hono client but at the moment their requsted router type is not compatible with the type outputed by the typed router. Hono's types are complex but it should be possible to transform the router type into something that the honoclient will understand
+  - as of now, listing never in the router type does not play well with the generated client.
+
+- Add compatiablity for honoClient.
+  - hono has already solved most of the problems this client aims to solve. We would use the hono client but at the moment their requsted router type is not compatible with the type outputed by the typed router. Hono's types are complex but it should be possible to transform the router type into something that the honoclient will understand

@@ -40,8 +40,7 @@ export type PostObject = Post;
  *
  * This type is returned from query functions. For most use cases, you should not need to use this type explicitly.
  */
-export type PostQuery = mongoose.Query<any, PostDocument, PostQueries> &
-  PostQueries;
+export type PostQuery = mongoose.Query<any, PostDocument, PostQueries> & PostQueries;
 
 /**
  * Mongoose Query helper types
@@ -72,12 +71,7 @@ export type PostModel = mongoose.Model<PostDocument, PostQueries> & PostStatics;
  * const PostSchema: PostSchema = new mongoose.Schema({ ... })
  * ```
  */
-export type PostSchema = mongoose.Schema<
-  PostDocument,
-  PostModel,
-  PostMethods,
-  PostQueries
->;
+export type PostSchema = mongoose.Schema<PostDocument, PostModel, PostMethods, PostQueries>;
 
 /**
  * Mongoose Document type
@@ -87,10 +81,7 @@ export type PostSchema = mongoose.Schema<
  * const Post = mongoose.model<PostDocument, PostModel>("Post", PostSchema);
  * ```
  */
-export type PostDocument = mongoose.Document<
-  mongoose.Types.ObjectId,
-  PostQueries
-> &
+export type PostDocument = mongoose.Document<mongoose.Types.ObjectId, PostQueries> &
   PostMethods & {
     title: string;
     body: string;
@@ -134,8 +125,7 @@ export type UserObject = User;
  *
  * This type is returned from query functions. For most use cases, you should not need to use this type explicitly.
  */
-export type UserQuery = mongoose.Query<any, UserDocument, UserQueries> &
-  UserQueries;
+export type UserQuery = mongoose.Query<any, UserDocument, UserQueries> & UserQueries;
 
 /**
  * Mongoose Query helper types
@@ -166,12 +156,7 @@ export type UserModel = mongoose.Model<UserDocument, UserQueries> & UserStatics;
  * const UserSchema: UserSchema = new mongoose.Schema({ ... })
  * ```
  */
-export type UserSchema = mongoose.Schema<
-  UserDocument,
-  UserModel,
-  UserMethods,
-  UserQueries
->;
+export type UserSchema = mongoose.Schema<UserDocument, UserModel, UserMethods, UserQueries>;
 
 /**
  * Mongoose Document type
@@ -181,10 +166,7 @@ export type UserSchema = mongoose.Schema<
  * const User = mongoose.model<UserDocument, UserModel>("User", UserSchema);
  * ```
  */
-export type UserDocument = mongoose.Document<
-  mongoose.Types.ObjectId,
-  UserQueries
-> &
+export type UserDocument = mongoose.Document<mongoose.Types.ObjectId, UserQueries> &
   UserMethods & {
     firstName?: string;
     lastName?: string;
@@ -241,20 +223,18 @@ type PopulatedProperty<Root, T extends keyof Root> = Omit<Root, T> & {
 export type PopulatedDocument<DocType, T> = T extends keyof DocType
   ? PopulatedProperty<DocType, T>
   : ParentProperty<T> extends keyof DocType
-  ? Omit<DocType, ParentProperty<T>> & {
-      [ref in ParentProperty<T>]: DocType[ParentProperty<T>] extends mongoose.Types.Array<
-        infer U
-      >
-        ? mongoose.Types.Array<
-            ChildProperty<T> extends keyof U
-              ? PopulatedProperty<U, ChildProperty<T>>
-              : PopulatedDocument<U, ChildProperty<T>>
-          >
-        : ChildProperty<T> extends keyof DocType[ParentProperty<T>]
-        ? PopulatedProperty<DocType[ParentProperty<T>], ChildProperty<T>>
-        : PopulatedDocument<DocType[ParentProperty<T>], ChildProperty<T>>;
-    }
-  : DocType;
+    ? Omit<DocType, ParentProperty<T>> & {
+        [ref in ParentProperty<T>]: DocType[ParentProperty<T>] extends mongoose.Types.Array<infer U>
+          ? mongoose.Types.Array<
+              ChildProperty<T> extends keyof U
+                ? PopulatedProperty<U, ChildProperty<T>>
+                : PopulatedDocument<U, ChildProperty<T>>
+            >
+          : ChildProperty<T> extends keyof DocType[ParentProperty<T>]
+            ? PopulatedProperty<DocType[ParentProperty<T>], ChildProperty<T>>
+            : PopulatedDocument<DocType[ParentProperty<T>], ChildProperty<T>>;
+      }
+    : DocType;
 
 /**
  * Helper types used by the populate overloads
@@ -271,26 +251,26 @@ declare module "mongoose" {
       path: T,
       select?: string | any,
       model?: string | Model<any, THelpers>,
-      match?: any
+      match?: any,
     ): Query<
       ResultType extends Array<DocType>
         ? Array<PopulatedDocument<Unarray<ResultType>, T>>
         : ResultType extends DocType
-        ? PopulatedDocument<Unarray<ResultType>, T>
-        : ResultType,
+          ? PopulatedDocument<Unarray<ResultType>, T>
+          : ResultType,
       DocType,
       THelpers
     > &
       THelpers;
 
     populate<T extends string>(
-      options: Modify<PopulateOptions, { path: T }> | Array<PopulateOptions>
+      options: Modify<PopulateOptions, { path: T }> | Array<PopulateOptions>,
     ): Query<
       ResultType extends Array<DocType>
         ? Array<PopulatedDocument<Unarray<ResultType>, T>>
         : ResultType extends DocType
-        ? PopulatedDocument<Unarray<ResultType>, T>
-        : ResultType,
+          ? PopulatedDocument<Unarray<ResultType>, T>
+          : ResultType,
       DocType,
       THelpers
     > &

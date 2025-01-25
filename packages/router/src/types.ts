@@ -1,12 +1,10 @@
-import type { Request, Response } from 'express';
-
-
+import type { Request, Response } from "express";
 // ---------- Type Definitions ----------
 
-import type {ParamsDictionary} from "express-serve-static-core";
+import type { ParamsDictionary } from "express-serve-static-core";
 
 /** Supported HTTP methods */
-export type HttpMethod = 'get' | 'post' | 'put' | 'delete' | 'patch';
+export type HttpMethod = "get" | "post" | "put" | "delete" | "patch";
 
 /**
  * Enhanced Response type that tracks chained method calls for improved type inference
@@ -24,14 +22,18 @@ export type TypedResponse<ResBody = unknown, Info extends any[] = []> = {
   json<T extends ResBody>(body: T): TypedResponse<T, [...Info, { json: T }]>;
   jsonp<T extends ResBody>(body: T): TypedResponse<T, [...Info, { jsonp: T }]>;
   send<T extends ResBody>(body: T): TypedResponse<T, [...Info, { send: T }]>;
-} & Omit<Response, 'status' | 'links' | 'sendStatus' | 'contentType' | 'type' | 'format' | 'attachment' | 'json' | 'jsonp' | 'send'>;
+} & Omit<
+  Response,
+  "status" | "links" | "sendStatus" | "contentType" | "type" | "format" | "attachment" | "json" | "jsonp" | "send"
+>;
 
 /**
  * Utility type to infer the response type from a handler or promise
  * @template T - The type to infer from (either a Promise or TypedResponse)
  * @returns The inferred response body type
  */
-export type InferResponseType<T> = T extends Promise<infer U> ? InferResponseType<U> : T extends TypedResponse<infer R, any> ? R : unknown;
+export type InferResponseType<T> =
+  T extends Promise<infer U> ? InferResponseType<U> : T extends TypedResponse<infer R, any> ? R : unknown;
 
 /**
  * Extracts path parameters from a route path string
@@ -42,10 +44,10 @@ export type InferResponseType<T> = T extends Promise<infer U> ? InferResponseTyp
 export type ExtractPathParams<T extends string> = string extends T
   ? ParamsDictionary
   : T extends `${infer _Start}:${infer Param}/${infer Rest}`
-  ? { [K in Param | keyof ExtractPathParams<Rest>]: string }
-  : T extends `${infer _Start}:${infer Param}`
-  ? Record<Param, string>
-  : {};
+    ? { [K in Param | keyof ExtractPathParams<Rest>]: string }
+    : T extends `${infer _Start}:${infer Param}`
+      ? Record<Param, string>
+      : {};
 
 /**
  * Type definition for route handlers with typed request/response
@@ -53,9 +55,8 @@ export type ExtractPathParams<T extends string> = string extends T
 export type TypedRequestHandler<TPath extends string, TQuery = any, TBody = any, TResponse = unknown> = (
   req: Request<ExtractPathParams<TPath>, any, TBody, TQuery>,
   res: TypedResponse<TResponse>,
-  next: () => void
+  next: () => void,
 ) => TypedResponse<TResponse> | Promise<TypedResponse<TResponse>>;
-
 
 /**
  * Helper type to update the router's type state when adding new routes

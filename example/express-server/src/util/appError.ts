@@ -1,17 +1,21 @@
-import { HttpStatusCode } from 'axios';
-import type {Document} from 'mongoose';
+import type { Document } from "mongoose";
+import { HttpStatusCode } from "axios";
 
 type ErrorInErrors = Record<string, { message: string; duplicate?: Document } | any>;
 export class AppError extends Error {
   readonly statusCode: HttpStatusCode;
-  readonly status: 'fail' | 'error';
+  readonly status: "fail" | "error";
   readonly isOperational: boolean;
   readonly errors?: ErrorInErrors;
 
-  constructor(message: string, statusCode: HttpStatusCode = HttpStatusCode.InternalServerError, errors?: ErrorInErrors) {
+  constructor(
+    message: string,
+    statusCode: HttpStatusCode = HttpStatusCode.InternalServerError,
+    errors?: ErrorInErrors,
+  ) {
     super(message);
     this.statusCode = statusCode;
-    this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
+    this.status = `${statusCode}`.startsWith("4") ? "fail" : "error";
     this.isOperational = true;
     this.errors = errors;
 
@@ -50,7 +54,7 @@ export class AppError extends Error {
       message: this.message,
       errors: this.errors,
       error: this.message, //this is to maintain current tests
-      stack: process.env.ENV === 'dev' ? this.stack : undefined,
+      stack: process.env.ENV === "dev" ? this.stack : undefined,
     };
   }
 }

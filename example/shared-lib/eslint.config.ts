@@ -1,4 +1,4 @@
-import baseConfig, { ConfigArr } from '@typed-router/eslint-config/base';
+import baseConfig, { ConfigArr } from "@typed-router/eslint-config/base";
 
 export default [
   {

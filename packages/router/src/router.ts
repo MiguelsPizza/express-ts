@@ -3,10 +3,9 @@
  * @module typed-router
  */
 
-import type { NextFunction, Request, RequestHandler, Response, RouterOptions } from 'express';
+import type { HttpMethod, InferResponseType, TypedRequestHandler, TypedResponse, UpdateRouter } from "./types";
+import type { NextFunction, Request, RequestHandler, Response, RouterOptions } from "express";
 import { Router } from "express";
-import type {HttpMethod, InferResponseType, TypedRequestHandler, TypedResponse, UpdateRouter} from './types';
-
 
 /**
  * Creates a new TypedResponse instance wrapping an Express Response
@@ -16,7 +15,9 @@ import type {HttpMethod, InferResponseType, TypedRequestHandler, TypedResponse, 
  * @param res - The Express Response object to wrap
  * @returns A typed response object with enhanced type information
  */
-export function createTypedResponse<ResBody = never, Info extends any[] = []>(res: Response): TypedResponse<ResBody, Info> {
+export function createTypedResponse<ResBody = never, Info extends any[] = []>(
+  res: Response,
+): TypedResponse<ResBody, Info> {
   const typedRes = Object.create(res) as TypedResponse<ResBody, Info>;
 
   /**
@@ -148,7 +149,9 @@ export function createTypedResponse<ResBody = never, Info extends any[] = []>(re
  *   );
  * ```
  */
-export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { query: any; body: any; response: any }>>> = {}> {
+export class TypedRouter<
+  T extends Partial<Record<HttpMethod, Record<string, { query: any; body: any; response: any }>>> = {},
+> {
   /** @internal Underlying Express router instance */
   private router: Router;
 
@@ -184,7 +187,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   >(
     method: M,
     path: P,
-    handlers: [...RequestHandler[], Handler]
+    handlers: [...RequestHandler[], Handler],
   ): TypedRouter<
     UpdateRouter<
       T,
@@ -238,7 +241,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'get',
+      "get",
       P,
       {
         query: any;
@@ -276,7 +279,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'get',
+      "get",
       P,
       {
         query: TQuery;
@@ -287,8 +290,11 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   >;
 
   // Implementation
-  get<P extends string, TQuery, TBody, TResponse>(path: P, ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]) {
-    return this.addRoute('get', path, handlers);
+  get<P extends string, TQuery, TBody, TResponse>(
+    path: P,
+    ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]
+  ) {
+    return this.addRoute("get", path, handlers);
   }
 
   // POST method overloads
@@ -298,7 +304,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'post',
+      "post",
       P,
       {
         query: any;
@@ -314,7 +320,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'post',
+      "post",
       P,
       {
         query: TQuery;
@@ -324,8 +330,11 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
     >
   >;
 
-  post<P extends string, TQuery, TBody, TResponse>(path: P, ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]) {
-    return this.addRoute('post', path, handlers);
+  post<P extends string, TQuery, TBody, TResponse>(
+    path: P,
+    ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]
+  ) {
+    return this.addRoute("post", path, handlers);
   }
 
   // PUT method overloads
@@ -335,7 +344,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'put',
+      "put",
       P,
       {
         query: any;
@@ -351,7 +360,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'put',
+      "put",
       P,
       {
         query: TQuery;
@@ -361,8 +370,11 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
     >
   >;
 
-  put<P extends string, TQuery, TBody, TResponse>(path: P, ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]) {
-    return this.addRoute('put', path, handlers);
+  put<P extends string, TQuery, TBody, TResponse>(
+    path: P,
+    ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]
+  ) {
+    return this.addRoute("put", path, handlers);
   }
 
   // DELETE method overloads
@@ -372,7 +384,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'delete',
+      "delete",
       P,
       {
         query: any;
@@ -388,7 +400,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'delete',
+      "delete",
       P,
       {
         query: TQuery;
@@ -398,8 +410,11 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
     >
   >;
 
-  delete<P extends string, TQuery, TBody, TResponse>(path: P, ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]) {
-    return this.addRoute('delete', path, handlers);
+  delete<P extends string, TQuery, TBody, TResponse>(
+    path: P,
+    ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]
+  ) {
+    return this.addRoute("delete", path, handlers);
   }
 
   // PATCH method overloads
@@ -409,7 +424,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'patch',
+      "patch",
       P,
       {
         query: any;
@@ -425,7 +440,7 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
   ): TypedRouter<
     UpdateRouter<
       T,
-      'patch',
+      "patch",
       P,
       {
         query: TQuery;
@@ -435,8 +450,11 @@ export class TypedRouter<T extends Partial<Record<HttpMethod, Record<string, { q
     >
   >;
 
-  patch<P extends string, TQuery, TBody, TResponse>(path: P, ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]) {
-    return this.addRoute('patch', path, handlers);
+  patch<P extends string, TQuery, TBody, TResponse>(
+    path: P,
+    ...handlers: [...RequestHandler[], TypedRequestHandler<P, TQuery, TBody, TResponse>]
+  ) {
+    return this.addRoute("patch", path, handlers);
   }
 
   /**

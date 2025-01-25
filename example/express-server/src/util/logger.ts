@@ -1,16 +1,17 @@
-import 'dotenv/config';
-import pino from 'pino';
+import "dotenv/config";
+
+import pino from "pino";
 
 const logger = pino({
-  level: 'debug',
+  level: "debug",
   transport: {
-    target: 'pino-pretty',
+    target: "pino-pretty",
     options: {
-      colorize: true
+      colorize: true,
     },
   },
 });
 
-export const developmentRedactPaths = ['req.headers', 'res.headers', 'req.remoteAddress', 'req.remotePort'] as const;
+export const developmentRedactPaths = ["req.headers", "res.headers", "req.remoteAddress", "req.remotePort"] as const;
 
 export default logger;
