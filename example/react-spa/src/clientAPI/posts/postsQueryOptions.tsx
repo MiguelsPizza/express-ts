@@ -1,7 +1,8 @@
-import { queryOptions } from '@tanstack/react-query'
-import { fetchPosts } from '.'
+import { queryOptions } from "@tanstack/react-query";
+
+import { fetchPosts } from ".";
 
 export const postsQueryOptions = queryOptions({
-  queryKey: ['posts'],
+  queryKey: ["posts"],
   queryFn: () => fetchPosts(),
-})
+});

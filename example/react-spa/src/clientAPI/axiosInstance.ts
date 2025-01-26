@@ -1,4 +1,8 @@
-import axios from 'redaxios';
+import axios from "redaxios";
 
-export default axios.create({ baseURL: "localhost:3001" })
-
+export default axios.create({
+  baseURL: "http://localhost:8888", // Add protocol here
+  headers: {
+    "Content-Type": "application/json",
+  },
+});

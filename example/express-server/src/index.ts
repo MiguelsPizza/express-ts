@@ -15,6 +15,23 @@ applyExternalMiddleware(app);
 // Apply routes
 app.use("/api", postRouter.routes());
 
+// Add auth logging middleware
+app.use((req, res, next) => {
+  logger.info(
+    {
+      path: req.path,
+      method: req.method,
+      headers: req.headers,
+      query: req.query,
+      body: req.body,
+      ip: req.ip,
+      timestamp: new Date().toISOString(),
+    },
+    "Incoming request",
+  );
+  next();
+});
+
 // Error handling middleware should be last
 app.use(errorHandler);
 

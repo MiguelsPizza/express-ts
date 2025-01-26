@@ -10,11 +10,10 @@
   },
   "scripts": {
     "start": "node dist/server.cjs",
-    "dev": "tsx watch ./server.ts",
+    "dev": "tsx watch ./src/index.ts",
     "dev-debug": "tsx watch --inspect ./server.ts",
     "build": "tsup-node --tsconfig ./tsconfig.json",
     "test": "vitest --coverage --ui --coverage.enabled=true",
-    "prep": "pnpm lint-staged",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "clean": "git clean -xdf .cache dist .coverage .turbo node_modules",
     "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js"

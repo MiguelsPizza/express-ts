@@ -1,6 +1,6 @@
-import { TypedRouter } from "@typed-router/router";
 import type { PostDocument } from "@typed-router/shared-lib/model-types";
 import type { JSONSerialized } from "mongoose";
+import { TypedRouter } from "@typed-router/router";
 
 import { Post } from "../models/post";
 
@@ -9,12 +9,18 @@ const postRouter = new TypedRouter()
     const post = await Post.findById(req.params.postId).orFail();
     return res.json(post);
   })
-  .get("/posts", async (req, res) => {
-    const posts = await Post.find().sort({ createdAt: -1 }).limit(10);
+  .get<"/posts", { sort?: "asc" | "desc"; limit?: string }, void, JSONSerialized<PostDocument>[]>(
+    "/posts",
+    async (req, res) => {
+      const { sort, limit } = req.query;
+      const posts = await Post.find()
+        .sort({ createdAt: sort === "asc" ? 1 : -1 })
+        .limit(Number(limit));
 
-    return res.json(posts);
-  });
+      return res.json(posts);
+    },
+  );
 
 export default postRouter;
 
-export type PostRouter = typeof postRouter
+export type PostRouter = typeof postRouter;

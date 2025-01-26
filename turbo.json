@@ -1,5 +1,12 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": [
+    "NODE_ENV",
+    "ENV",
+    "LOG_LEVEL",
+    "DEBUG",
+    "npm_package_version"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
