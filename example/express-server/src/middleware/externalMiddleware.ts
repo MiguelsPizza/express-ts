@@ -8,7 +8,7 @@ import express from "express";
 import pinoHttp from "pino-http";
 
 // import { datadogConnectMiddleware } from './datadog';
-import logger, { redactPaths } from "../util/logger";
+import logger, { developmentRedactPaths } from "../util/logger";
 
 export function applyExternalMiddleware(app: Application) {
   // Set server port and IP
@@ -19,7 +19,7 @@ export function applyExternalMiddleware(app: Application) {
     pinoHttp({
       logger,
       redact: {
-        paths: redactPaths as unknown as string[],
+        paths: developmentRedactPaths,
         remove: true,
       },
     }),
@@ -31,6 +31,7 @@ export function applyExternalMiddleware(app: Application) {
   app.use(compression());
 
   // CORS configuration
+  // DO NO USE THIS IF YOU ARE COPYING THIS EXAMPLE FOR A PROD APP
   app.use(
     cors({
       origin: "*",
