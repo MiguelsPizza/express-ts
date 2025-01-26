@@ -118,40 +118,6 @@ importers:
 
   example/express-server:
     dependencies:
-      axios:
-        specifier: ^1.7.9
-        version: 1.7.9
-      compression:
-        specifier: ^1.7.4
-        version: 1.7.5
-      cors:
-        specifier: ^2.8.5
-        version: 2.8.5
-      express:
-        specifier: ^5.0.1
-        version: 5.0.1
-      mongoose:
-        specifier: 'catalog:'
-        version: 8.9.5(socks@2.8.3)
-      pino:
-        specifier: ^9.4.0
-        version: 9.6.0
-      pino-http:
-        specifier: ^10.3.0
-        version: 10.4.0
-      pino-pretty:
-        specifier: ^11.2.2
-        version: 11.3.0
-    devDependencies:
-      '@ianvs/prettier-plugin-sort-imports':
-        specifier: 'catalog:'
-        version: 4.4.1(prettier@3.4.2)
-      '@typed-router/eslint-config':
-        specifier: workspace:*
-        version: link:../../tooling/eslint
-      '@typed-router/prettier-config':
-        specifier: workspace:*
-        version: link:../../tooling/prettier
       '@typed-router/router':
         specifier: workspace:*
         version: link:../../packages/router
@@ -164,24 +130,61 @@ importers:
       '@typed-router/tsup-config':
         specifier: workspace:*
         version: link:../../tooling/tsup
+      axios:
+        specifier: ^1.7.9
+        version: 1.7.9
+      compression:
+        specifier: ^1.7.4
+        version: 1.7.5
+      cors:
+        specifier: ^2.8.5
+        version: 2.8.5
+      express:
+        specifier: ^5.0.1
+        version: 5.0.1
+      mongodb-memory-server:
+        specifier: ^9.1.8
+        version: 9.5.0
+      mongoose:
+        specifier: 'catalog:'
+        version: 8.9.5(socks@2.8.3)
+      pino:
+        specifier: ^9.4.0
+        version: 9.6.0
+      pino-http:
+        specifier: ^10.3.0
+        version: 10.4.0
+      pino-pretty:
+        specifier: ^11.2.2
+        version: 11.3.0
+      tsup:
+        specifier: 'catalog:'
+        version: 8.3.5(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)
+    devDependencies:
+      '@ianvs/prettier-plugin-sort-imports':
+        specifier: 'catalog:'
+        version: 4.4.1(prettier@3.4.2)
+      '@typed-router/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@typed-router/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
       '@types/compression':
         specifier: ^1.7.5
         version: 1.7.5
+      '@types/cors':
+        specifier: ^2.8.17
+        version: 2.8.17
       '@types/express':
         specifier: ^5.0.0
         version: 5.0.0
       '@types/express-serve-static-core':
         specifier: ^5.0.1
         version: 5.0.5
-      mongodb-memory-server:
-        specifier: ^9.1.8
-        version: 9.5.0
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
-      tsup:
-        specifier: 'catalog:'
-        version: 8.3.5(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)
       tsx:
         specifier: ^4.7.2
         version: 4.19.2
@@ -237,12 +240,24 @@ importers:
       '@typed-router/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
+      '@typed-router/router':
+        specifier: workspace:*
+        version: link:../../packages/router
+      '@typed-router/shared-lib':
+        specifier: workspace:*
+        version: link:../shared-lib
       '@typed-router/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@types/compression':
-        specifier: ^1.7.5
-        version: 1.7.5
+      '@typed-router/tsup-config':
+        specifier: workspace:*
+        version: link:../../tooling/tsup
+      '@types/express':
+        specifier: ^5.0.0
+        version: 5.0.0
+      '@types/express-serve-static-core':
+        specifier: ^5.0.1
+        version: 5.0.5
       '@types/react':
         specifier: ^18.2.47
         version: 18.3.18
@@ -252,15 +267,27 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.3.4
         version: 4.3.4(vite@6.0.11(@types/node@22.10.10)(jiti@2.4.2)(tsx@4.19.2))
+      mongodb-memory-server:
+        specifier: ^9.1.8
+        version: 9.5.0
       prettier:
         specifier: 'catalog:'
         version: 3.4.2
+      tsup:
+        specifier: 'catalog:'
+        version: 8.3.5(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)
+      tsx:
+        specifier: ^4.7.2
+        version: 4.19.2
       typescript:
         specifier: 'catalog:'
         version: 5.7.3
       vite:
         specifier: ^6.0.3
         version: 6.0.11(@types/node@22.10.10)(jiti@2.4.2)(tsx@4.19.2)
+      vitest:
+        specifier: ^2.0.5
+        version: 2.1.8(@types/node@22.10.10)
 
   example/shared-lib:
     dependencies:
@@ -1401,6 +1428,9 @@ packages:
 
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
+
+  '@types/cors@2.8.17':
+    resolution: {integrity: sha512-8CGDvrBj1zgo2qE+oS3pOCyYNqCPryMWY2bGfwA0dcfopWGgxs+78df0Rs3rc9THP4JkOhLsAa+15VdpAqkcUA==}
 
   '@types/diff@6.0.0':
     resolution: {integrity: sha512-dhVCYGv3ZSbzmQaBSagrv1WJ6rXCdkyTcDyoNu1MD8JohI7pR7k8wdZEm+mvdxRKXyHVwckFzWU1vJc+Z29MlA==}
@@ -4876,13 +4906,17 @@ snapshots:
 
   '@types/cli-progress@3.11.6':
     dependencies:
-      '@types/node': 22.10.10
+      '@types/node': 20.17.16
 
   '@types/compression@1.7.5':
     dependencies:
       '@types/express': 5.0.0
 
   '@types/connect@3.4.38':
+    dependencies:
+      '@types/node': 20.17.16
+
+  '@types/cors@2.8.17':
     dependencies:
       '@types/node': 20.17.16
 

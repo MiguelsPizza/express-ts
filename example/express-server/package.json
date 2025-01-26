@@ -5,46 +5,47 @@
   "main": "./src/index.ts",
   "exports": {
     "./post": {
+      "types": "./dist/controllers/post.d.ts",
       "default": "./src/controllers/post.ts"
     }
   },
   "scripts": {
-    "start": "node dist/server.cjs",
+    "start": "pnpm build && node dist/index.js",
     "dev": "tsx watch ./src/index.ts",
     "dev-debug": "tsx watch --inspect ./server.ts",
     "build": "tsup-node --tsconfig ./tsconfig.json",
-    "test": "vitest --coverage --ui --coverage.enabled=true",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "clean": "git clean -xdf .cache dist .coverage .turbo node_modules",
     "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js"
   },
   "dependencies": {
-    "compression": "^1.7.4",
+    "@typed-router/router": "workspace:*",
+    "@typed-router/shared-lib": "workspace:*",
+    "@typed-router/tsconfig": "workspace:*",
+    "@typed-router/tsup-config": "workspace:*",
     "axios": "^1.7.9",
+    "compression": "^1.7.4",
     "cors": "^2.8.5",
     "express": "^5.0.1",
+    "mongodb-memory-server": "^9.1.8",
     "mongoose": "catalog:",
     "pino": "^9.4.0",
     "pino-http": "^10.3.0",
-    "pino-pretty": "^11.2.2"
+    "pino-pretty": "^11.2.2",
+    "tsup": "catalog:"
   },
   "devDependencies": {
-    "@typed-router/router": "workspace:*",
-    "@typed-router/shared-lib": "workspace:*",
-    "@typed-router/tsup-config": "workspace:*",
-    "@types/compression": "^1.7.5",
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@typed-router/eslint-config": "workspace:*",
     "@typed-router/prettier-config": "workspace:*",
-    "@typed-router/tsconfig": "workspace:*",
+    "@types/compression": "^1.7.5",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/express-serve-static-core": "^5.0.1",
-    "mongodb-memory-server": "^9.1.8",
     "prettier": "catalog:",
     "tsx": "^4.7.2",
     "typescript": "catalog:",
-    "vitest": "^2.0.5",
-    "tsup": "catalog:"
+    "vitest": "^2.0.5"
   },
   "prettier": "@typed-router/prettier-config"
 }

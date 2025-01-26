@@ -1,13 +1,13 @@
+import { TypedRouter } from "@typed-router/router";
 import type { PostDocument } from "@typed-router/shared-lib/model-types";
 import type { JSONSerialized } from "mongoose";
-import { TypedRouter } from "@typed-router/router";
 
 import { Post } from "../models/post";
 
 const postRouter = new TypedRouter()
-  .get<"/posts/:postId", void, void, JSONSerialized<PostDocument>>("/posts/:postId", async (req, res) => {
+  .get("/posts/:postId", async (req, res) => {
     const post = await Post.findById(req.params.postId).orFail();
-    return res.json(post);
+    return res.json(post.toJSON());
   })
   .get<"/posts", { sort?: "asc" | "desc"; limit?: string }, void, JSONSerialized<PostDocument>[]>(
     "/posts",
@@ -17,7 +17,7 @@ const postRouter = new TypedRouter()
         .sort({ createdAt: sort === "asc" ? 1 : -1 })
         .limit(Number(limit));
 
-      return res.json(posts);
+      return res.json(posts.map(post => post.toJSON()));
     },
   );
 

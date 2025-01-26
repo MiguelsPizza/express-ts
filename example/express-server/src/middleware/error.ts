@@ -1,10 +1,10 @@
-import type { NextFunction, Request } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { MongooseError } from "mongoose";
 
 import { AppError } from "../util/appError";
 import logger from "../util/logger";
 
-const errorHandler = (err: Error | AppError | MongooseError, _: Request, res, __: NextFunction) => {
+const errorHandler = (err: Error | AppError | MongooseError, _: Request, res: Response, __: NextFunction) => {
   let appError: AppError;
   if (err instanceof AppError) {
     appError = err;

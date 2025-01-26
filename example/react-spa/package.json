@@ -6,7 +6,7 @@
     "dev": "vite --port=3000",
     "build": "vite build && tsc --noEmit",
     "serve": "vite preview",
-    "start": "vite",
+    "start": "pnpm build && pnpm serve",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "clean": "git clean -xdf .cache dist .coverage .turbo node_modules",
     "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js"

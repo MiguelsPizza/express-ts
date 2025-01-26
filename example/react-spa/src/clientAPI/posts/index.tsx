@@ -1,5 +1,5 @@
-import type { PostRouter } from "@typed-router/express-server/post";
 import { createAPIClient } from "@typed-router/client";
+import type { PostRouter } from "@typed-router/express-server/post";
 
 import axiosInstance from "../axiosInstance";
 

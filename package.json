@@ -11,7 +11,6 @@
     "test": "turbo run test",
     "clean": "git clean -xdf .cache .turbo node_modules",
     "typecheck": "turbo run typecheck",
-    "test:e2e:dev": "pnpm --filter @typed-router/e2e-tests test:e2e:ci"
   },
   "engines": {
     "node": ">=22.12",

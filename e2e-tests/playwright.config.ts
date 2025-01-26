@@ -1,6 +1,6 @@
-import path from "path";
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
+import path from "path";
 
 dotenv.config({ path: path.join(__dirname, ".env") });
 
@@ -24,7 +24,6 @@ export default defineConfig({
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
-    // Our app only needs to work on Chromium atm
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },
@@ -36,16 +35,16 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: process.env.PLAT === "win" ? "npx turbo dev:test:win" : "npx turbo dev:test",
+      command: "turbo start",
       cwd: path.join(__dirname, "../apps/server"),
-      port: 3001,
+      port: 8888,
       reuseExistingServer: true,
       timeout: 120000,
       stdout: "pipe",
       stderr: "pipe",
     },
     {
-      command: "npx turbo build && npx pnpm preview",
+      command: "turbo start",
       port: 4173, // both wait on the server port because it takes longer
       reuseExistingServer: true,
       cwd: path.join(__dirname, "../apps/interface"),

@@ -8,6 +8,12 @@
     "npm_package_version"
   ],
   "tasks": {
+    "start": {
+      "dependsOn": ["^build"],
+      "persistent": true,
+      "cache": false,
+      "outputs": ["dist/**", "bin/**", ".next/**", "!.next/cache/**"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "cache": true,
