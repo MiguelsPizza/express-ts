@@ -71,7 +71,7 @@ const handleMongooseError = (error: MongooseError): AppError => {
 
     default: {
       if ((error as any).code === 11000) {
-        const value = (error as any).message.match(/(["'])(\\?.)*?\1/)?.[0] || "unknown";
+        const value = (error as any).message.match(/["'][^"']*["']/)?.[0] || "unknown";
         const duplicateMessage = `Duplicate field value: ${value}. Please use another value.`;
         return AppError.badRequest(duplicateMessage);
       }
