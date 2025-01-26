@@ -1,7 +1,7 @@
-import type { PostDocument, PostModel, PostSchema } from "@typed-router/shared-lib/model-types";
+import type { PostModel, PostSchema } from "@typed-router/shared-lib/model-types";
 import mongoose from "mongoose";
 
-const postSchema: PostSchema = new mongoose.Schema(
+export const postSchema: PostSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -17,4 +17,4 @@ const postSchema: PostSchema = new mongoose.Schema(
   },
 );
 
-export const Post = mongoose.model<PostDocument, PostModel>("Post", postSchema);
+export const Post: PostModel = mongoose.model("Post", postSchema);

@@ -5,8 +5,10 @@
   "main": "./src/index.ts",
   "exports": {
     "./post": {
-      "types": "./dist/controllers/post.d.ts",
-      "default": "./src/controllers/post.ts"
+      "development":  "./src/controllers/post.ts",
+      "default": {
+        "types": "./dist/controllers/post.d.ts"
+      }
     }
   },
   "scripts": {
@@ -16,7 +18,8 @@
     "build": "tsup-node --tsconfig ./tsconfig.json",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "clean": "git clean -xdf .cache dist .coverage .turbo node_modules",
-    "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js"
+    "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@typed-router/router": "workspace:*",
@@ -31,7 +34,7 @@
     "mongoose": "catalog:",
     "pino": "^9.4.0",
     "pino-http": "^10.3.0",
-    "pino-pretty": "^11.2.2",
+    "pino-pretty": "^11.2.1",
     "tsup": "catalog:"
   },
   "devDependencies": {

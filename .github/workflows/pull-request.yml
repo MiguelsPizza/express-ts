@@ -28,11 +28,15 @@ jobs:
         with:
           version: 10
 
+      - name: Run Linter
+        run: pnpm lint
+
+      - name: Check types
+        run: pnpm lint
+
       - name: Install Dependencies
         run: pnpm install
 
       - name: Run Tests
         run: pnpm test
 
-      - name: Run Linter
-        run: pnpm lint

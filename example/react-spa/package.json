@@ -9,7 +9,8 @@
     "start": "pnpm build && pnpm serve",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "clean": "git clean -xdf .cache dist .coverage .turbo node_modules",
-    "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js"
+    "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@typed-router/express-server": "workspace:*",
@@ -34,12 +35,8 @@
     "@typed-router/prettier-config": "workspace:*",
     "@typed-router/tsconfig": "workspace:*",
     "prettier": "catalog:",
-    "@typed-router/router": "workspace:*",
     "@typed-router/shared-lib": "workspace:*",
     "@typed-router/tsup-config": "workspace:*",
-    "@types/express": "^5.0.0",
-    "@types/express-serve-static-core": "^5.0.1",
-    "mongodb-memory-server": "^9.1.8",
     "tsx": "^4.7.2",
     "typescript": "catalog:",
     "vitest": "^2.0.5",

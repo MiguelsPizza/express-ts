@@ -10,7 +10,7 @@
     "format": "turbo run format",
     "test": "turbo run test",
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "typecheck": "turbo run typecheck",
+    "typecheck": "turbo run typecheck"
   },
   "engines": {
     "node": ">=22.12",
@@ -18,15 +18,16 @@
   },
   "devDependencies": {
     "@typed-router/prettier-config": "workspace:*",
-    "prettier": "catalog:",
     "eslint": "catalog:",
     "jiti": "^2.4.2",
+    "prettier": "catalog:",
     "tsup": "catalog:",
     "tsx": "4.19.2",
     "typescript": "catalog:"
   },
   "prettier": "@typed-router/prettier-config",
   "dependencies": {
+    "@changesets/cli": "^2.27.12",
     "dotenv": "^16.4.5",
     "pnpm": "10.0.0",
     "tslib": "^2.0.0",

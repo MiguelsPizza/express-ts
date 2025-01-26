@@ -16,7 +16,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "cache": true,
+      "cache": false,
       "outputs": ["dist/**", "bin/**", ".next/**", "!.next/cache/**"]
     },
     "dev": {
@@ -25,17 +25,13 @@
       "persistent": true,
       "outputs": ["dist/**", ".next/**"]
     },
-    "e2e": {
+    "test": {
       "dependsOn": ["^build"],
       "cache": false,
-      "persistent": false
+      "persistent": true
     },
     "clean": {
       "cache": false
-    },
-    "test": {
-      "dependsOn": ["^build"],
-      "outputs": ["coverage/**"]
     },
     "lint": {
       "outputs": []

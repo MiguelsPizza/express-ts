@@ -1,1 +1,49 @@
+# Tests
 e2e-tests/*
+**/*.test.*
+**/*.spec.*
+__tests__/*
+coverage/*
+
+# Development files
+example/*
+examples/*
+tooling/*
+.turbo/*
+.github/*
+.vscode/*
+.idea/*
+.env*
+.eslintrc*
+.prettierrc*
+.changeset/*
+tsconfig.json
+jest.config.*
+vitest.config.*
+*.log
+
+# Documentation and assets
+docs/*
+assets/*
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+
+# Source files (if you're publishing compiled code)
+src/*
+!dist/*
+!build/*
+
+# Monorepo specific
+packages/*/src/*
+packages/*/*.test.*
+packages/*/tsconfig.json
+packages/*/.turbo
+packages/*/dist/test
+packages/*/coverage
+
+# Development configs
+.npmrc
+pnpm-lock.yaml
+pnpm-workspace.yaml
+turbo.json
