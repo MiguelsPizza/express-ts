@@ -1,13 +1,13 @@
+import path from "path";
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
-import path from "path";
 
 dotenv.config({ path: path.join(__dirname, ".env") });
-console.log('path:' + path.join(__dirname, 'tests'))
+console.log("path:" + path.join(__dirname, "tests"));
 
 export default defineConfig({
   globalSetup: require.resolve("./global-setup"),
-  testDir: path.join(__dirname, 'tests'),
+  testDir: path.join(__dirname, "tests"),
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: 1,

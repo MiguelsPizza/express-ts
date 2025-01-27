@@ -1,18 +1,18 @@
+import * as path from "node:path";
+import type { PgliteDatabase } from "drizzle-orm/pglite";
 import { PGlite } from "@electric-sql/pglite";
 import * as schema from "@typed-router/shared-lib/schema";
-import { drizzle, PgliteDatabase } from 'drizzle-orm/pglite';
+import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
-import * as path from 'node:path';
 
 export type DB = PgliteDatabase<typeof schema> & {
   $client: PGlite;
 };
 
-
 export class Database {
   static instance: DB;
 
-  private constructor() { } // Prevent direct construction
+  private constructor() {} // Prevent direct construction
 
   static async initialize() {
     if (this.instance) {
@@ -29,14 +29,14 @@ export class Database {
       });
 
       // Seed database in development/test
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV !== "production") {
         await seedDatabase(db);
       }
 
       this.instance = db;
       return this.instance;
     } catch (error) {
-      console.error('Failed to initialize database:', error);
+      console.error("Failed to initialize database:", error);
       throw error;
     }
   }

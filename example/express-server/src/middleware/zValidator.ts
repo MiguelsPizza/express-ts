@@ -1,6 +1,8 @@
-import { NextFunction, Request, RequestHandler, Response } from 'express';
-import { z, ZodError, ZodObject, ZodSchema } from 'zod';
-import { AppError } from '../util/appError';
+import type { NextFunction, Request, RequestHandler, Response } from "express";
+import type { z, ZodError, ZodSchema } from "zod";
+import { ZodObject } from "zod";
+
+import { AppError } from "../util/appError";
 
 // feel free to drop this in your project and use with your own Error class or preferred validation library
 
@@ -9,16 +11,13 @@ import { AppError } from '../util/appError';
  * Receives the parse result (success or failure) plus
  * the (req, res, next) parameters for any custom handling.
  */
-type Hook<
-  ParsedData,
-  Target extends keyof ExpressValidationTargets
-> = (
+type Hook<ParsedData, Target extends keyof ExpressValidationTargets> = (
   result:
     | { success: true; data: ParsedData; target: Target }
     | { success: false; error: ZodError; data: unknown; target: Target },
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => void | Promise<void>;
 
 /**
@@ -39,13 +38,10 @@ interface ExpressValidationTargets {
  * - hook (optional): a function that will be called right after parsing;
  *                    can be used to handle (or short-circuit) in case of errors or do custom logic.
  */
-export function zValidator<
-  T extends ZodSchema<any, any, any>,
-  Target extends keyof ExpressValidationTargets
->(
+export function zValidator<T extends ZodSchema<any, any, any>, Target extends keyof ExpressValidationTargets>(
   target: Target,
   schema: T,
-  hook?: Hook<z.infer<T>, Target>
+  hook?: Hook<z.infer<T>, Target>,
 ): RequestHandler {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -54,17 +50,17 @@ export function zValidator<
 
       // Special handling to make header keys case-insensitive if using a ZodObject
       // so that "content-type" and "Content-Type" remain consistent.
-      if (target === 'header' && schema instanceof ZodObject) {
+      if (target === "header" && schema instanceof ZodObject) {
         const schemaKeys = Object.keys(schema.shape);
         const caseInsensitiveKeyMap: Record<string, string> = Object.fromEntries(
-          schemaKeys.map((key) => [key.toLowerCase(), key])
+          schemaKeys.map((key) => [key.toLowerCase(), key]),
         );
 
         validatorValue = Object.fromEntries(
           Object.entries(req.headers).map(([k, v]) => {
             const mappedKey = caseInsensitiveKeyMap[k.toLowerCase()] || k;
             return [mappedKey, v];
-          })
+          }),
         );
       }
 
@@ -79,13 +75,17 @@ export function zValidator<
             : { success: false, error: result.error, data: validatorValue, target },
           req,
           res,
-          next
+          next,
         );
       }
 
       // Handle errors (if validation fails, respond with a 400 by default):
       if (!result.success) {
-        throw new AppError("Zod Error: Validation failed", 400, Object.groupBy(result.error.errors, (error) => error.code));
+        throw new AppError(
+          "Zod Error: Validation failed",
+          400,
+          Object.groupBy(result.error.errors, (error) => error.code),
+        );
       }
 
       return next();
@@ -95,5 +95,3 @@ export function zValidator<
     }
   };
 }
-
-

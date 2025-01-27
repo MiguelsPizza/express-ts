@@ -1,4 +1,5 @@
 import { defineConfig } from "tsup";
+
 import packageJSON from "./package.json";
 
 export default defineConfig({
@@ -13,11 +14,11 @@ export default defineConfig({
   bundle: false,
   outDir: "./dist",
   experimentalDts: {
-    entry: "./src/index.ts"
+    entry: "./src/index.ts",
   },
   tsconfig: "./tsconfig.json",
   // you'll want to replace this wil the name of your monorepo if you are using this example
-  noExternal: Object.keys(packageJSON.dependencies).filter(dep => dep.includes("@typed-router")),
+  noExternal: Object.keys(packageJSON.dependencies).filter((dep) => dep.includes("@typed-router")),
   esbuildOptions(options) {
     options.bundle = true;
     options.platform = "node";

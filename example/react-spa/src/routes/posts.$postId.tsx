@@ -1,13 +1,14 @@
+import type { NewPost } from "@typed-router/shared-lib/schema";
+import type { ErrorComponentProps } from "@tanstack/react-router";
+import * as React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryErrorResetBoundary, useSuspenseQuery } from "@tanstack/react-query";
-import type { ErrorComponentProps } from "@tanstack/react-router";
 import { createFileRoute, ErrorComponent } from "@tanstack/react-router";
-import * as React from "react";
+import { insertPostSchema } from "@typed-router/shared-lib/schema";
 import { useForm } from "react-hook-form";
 
-import { insertPostSchema, NewPost } from "@typed-router/shared-lib/schema";
 import { deletePost, PostNotFoundError } from "../clientAPI/posts";
-import { updatePost } from '../clientAPI/posts/index';
+import { updatePost } from "../clientAPI/posts/index";
 import { postQueryKey, postQueryOptions } from "../clientAPI/posts/postQueryOptions";
 import { postsQueryKeys } from "../clientAPI/posts/postsQueryOptions";
 
@@ -20,7 +21,7 @@ export const Route = createFileRoute("/posts/$postId")({
 });
 
 export function PostErrorComponent({ error }: ErrorComponentProps) {
-  const router = Route.router
+  const router = Route.router;
 
   const queryErrorResetBoundary = useQueryErrorResetBoundary();
   React.useEffect(() => {
@@ -47,9 +48,9 @@ export function PostErrorComponent({ error }: ErrorComponentProps) {
 
 function PostComponent() {
   const postId = Route.useParams().postId;
-  const navigate = Route.useNavigate()
+  const navigate = Route.useNavigate();
   const { data: post } = useSuspenseQuery(postQueryOptions(postId));
-  const { queryClient } = Route.useRouteContext()
+  const { queryClient } = Route.useRouteContext();
   const [isEditing, setIsEditing] = React.useState(false);
 
   const {
@@ -74,8 +75,7 @@ function PostComponent() {
   }, [post, reset]);
 
   const updatePostMutation = useMutation({
-    mutationFn: ({ postId, updatedPost }: { postId: string; updatedPost: NewPost }) =>
-      updatePost(postId, updatedPost),
+    mutationFn: ({ postId, updatedPost }: { postId: string; updatedPost: NewPost }) => updatePost(postId, updatedPost),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: postQueryKey(postId) });
       queryClient.invalidateQueries({ queryKey: postsQueryKeys });
@@ -87,7 +87,7 @@ function PostComponent() {
     mutationFn: (postId: string) => deletePost(postId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: postsQueryKeys });
-      navigate({ to: '/posts' });
+      navigate({ to: "/posts" });
     },
   });
 
@@ -117,14 +117,14 @@ function PostComponent() {
             </button>
             <button
               onClick={() => {
-                if (window.confirm('Are you sure you want to delete this post?')) {
+                if (window.confirm("Are you sure you want to delete this post?")) {
                   deletePostMutation.mutate(postId);
                 }
               }}
               className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
               disabled={deletePostMutation.isPending}
             >
-              {deletePostMutation.isPending ? 'Deleting...' : 'Delete Post'}
+              {deletePostMutation.isPending ? "Deleting..." : "Delete Post"}
             </button>
           </div>
         </div>
@@ -135,25 +135,21 @@ function PostComponent() {
             <label className="block">
               <span className="text-gray-700">Title</span>
               <input
-                {...register('title')}
+                {...register("title")}
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               />
-              {errors.title && (
-                <span className="text-red-500 text-sm">{errors.title.message}</span>
-              )}
+              {errors.title && <span className="text-red-500 text-sm">{errors.title.message}</span>}
             </label>
 
             <label className="block">
               <span className="text-gray-700">Content</span>
               <textarea
-                {...register('body')}
+                {...register("body")}
                 rows={5}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
               />
-              {errors.body && (
-                <span className="text-red-500 text-sm">{errors.body.message}</span>
-              )}
+              {errors.body && <span className="text-red-500 text-sm">{errors.body.message}</span>}
             </label>
           </div>
 
@@ -163,7 +159,7 @@ function PostComponent() {
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors"
               disabled={updatePostMutation.isPending}
             >
-              {updatePostMutation.isPending ? 'Saving...' : 'Save Changes'}
+              {updatePostMutation.isPending ? "Saving..." : "Save Changes"}
             </button>
             <button
               type="button"
@@ -179,17 +175,13 @@ function PostComponent() {
           </div>
 
           {updatePostMutation.isError && (
-            <div className="text-red-500">
-              Error updating post: {updatePostMutation.error.message}
-            </div>
+            <div className="text-red-500">Error updating post: {updatePostMutation.error.message}</div>
           )}
         </form>
       )}
 
       {deletePostMutation.isError && (
-        <div className="text-red-500">
-          Error deleting post: {deletePostMutation.error.message}
-        </div>
+        <div className="text-red-500">Error deleting post: {deletePostMutation.error.message}</div>
       )}
     </div>
   );

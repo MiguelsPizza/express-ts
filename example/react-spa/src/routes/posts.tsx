@@ -15,7 +15,6 @@ function PostsComponent() {
     <div className="p-2 flex gap-2">
       <ul className="list-disc pl-4">
         {posts.map(({ id, title }) => {
-
           return (
             <li key={id} className="whitespace-nowrap">
               <Link

@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "prettier": "catalog:",
-    "tsup":  "catalog:"
+    "tsup": "catalog:"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",

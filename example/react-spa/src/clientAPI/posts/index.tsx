@@ -1,7 +1,7 @@
+import type { PostRouter } from "@typed-router/express-server";
+import type { NewPost } from "@typed-router/shared-lib/schema";
 import { createAPIClient } from "@typed-router/client";
 
-import { PostRouter } from "@typed-router/express-server";
-import { NewPost } from "@typed-router/shared-lib/schema";
 import axiosInstance from "../axiosInstance";
 
 export class PostNotFoundError extends Error {}

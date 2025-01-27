@@ -1,13 +1,13 @@
-import { pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod';
-import { z } from 'zod';
+import { pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-export const posts = pgTable('posts', {
-  id: serial('id').primaryKey(),
-  title: varchar('title', { length: 255 }).notNull(),
-  body: text('body').notNull(),
-  createdAt: timestamp('created_at').notNull().defaultNow(),
-  updatedAt: timestamp('updated_at').notNull().defaultNow()
+export const posts = pgTable("posts", {
+  id: serial("id").primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  body: text("body").notNull(),
+  createdAt: timestamp("created_at").notNull().defaultNow(),
+  updatedAt: timestamp("updated_at").notNull().defaultNow(),
 });
 
 export type Post = typeof posts.$inferSelect;
@@ -19,4 +19,3 @@ export const insertPostSchema: z.ZodType<NewPost> = createInsertSchema(posts, {
 });
 
 export const selectPostSchema: z.ZodType<NewPost> = createSelectSchema(posts);
-

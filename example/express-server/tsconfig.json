@@ -33,5 +33,5 @@
   },
 
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules", ".tsup"]
 }

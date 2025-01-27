@@ -14,7 +14,6 @@ app.use("/api", postRouter.routes());
 
 app.use(errorHandler);
 
-
 process.on("uncaughtException", (error) => {
   logger.error("Uncaught Exception:", error);
   process.exit(1);
