@@ -26,6 +26,7 @@ jobs:
       - uses: pnpm/action-setup@v4
         name: Install pnpm
         with:
+          run_install: true
           version: 10.0.0
 
       - name: Run Linter
