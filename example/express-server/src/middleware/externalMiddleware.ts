@@ -7,7 +7,6 @@ import type { Application } from "express";
 import express from "express";
 import pinoHttp from "pino-http";
 
-// import { datadogConnectMiddleware } from './datadog';
 import logger, { developmentRedactPaths } from "../util/logger";
 
 export function applyExternalMiddleware(app: Application) {

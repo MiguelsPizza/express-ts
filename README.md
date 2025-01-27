@@ -1,23 +1,87 @@
-A decade ago, nodejs and express opened the doors for javascript developers to write isomorphic javascript code. unfortunatly Express is largly maintained and even though version 5 was just released, it has fallen far behind other modern options like hono and fastify to name a few. It's lacks in many place but the place it lacks most is typescipt support.
+# Typed Router for Express
 
-there are many projects that aim to bring end to end type saftey to express. TRPC is the most prominit one but there are others like typed express that aim to do this. the issue with all of these packages is that they reuqired major re-writes of your express app which is a nonstarter for large legacy projects that use express. and if you are starting a new project, there really isn't any point in using express.
+A modern TypeScript wrapper for Express applications that provides end-to-end type safety without requiring major rewrites of existing code.
 
-This library aims to bring th modern typescript e2e type-safe Dev expirence to the express stack and this repo also provides an opinionated set up for Typesafe MERN stack apps. this readme is two parts.
+## Background
 
-1 The typed router express package and the example typesafe MERN app.
+Node.js and Express revolutionized JavaScript development by enabling isomorphic code. While Express remains widely used and recently released version 5, modern alternatives like Hono and Fastify offer superior TypeScript support and performance benefits.
 
-the typed router is insired by hono and aims to match the hono api as much as possible. I would recomend switching to hono if you have a legacty express app in typescript and the typed router is a great intermediary step.
+Several projects attempt to bring end-to-end type safety to Express (like tRPC), but they typically require significant refactoring of existing applications. This library takes a different approach by providing a thin TypeScript wrapper around Express Router, allowing incremental adoption in legacy projects.
 
-otherwise the typed router is just a thin wrapper around express that provides type inference for params and return types. there are some caveaugts which i will cover in the caveout section.
+## Features
 
-We use the express type and if you are already using the express router, this lib will be a drop in replacement. we are also matching the genetics for router
-so a router.get<path, query, body, return>('/path'...)
+- Drop-in replacement for Express Router with full type inference
+- Compatible with existing Express middleware and plugins
+- Type-safe route parameters, query strings, request bodies, and responses
+- Minimal runtime overhead
+- Inspired by Hono's API design
 
-considering you probably have a large api if you are using this project. i recomned exp;oring the type from each of your routers and creating clients for them separatly. The type design required expesnisve inference since we are working within the constraints of the existing express types. also creating a dts file for the types is highly recomended.
+## Usage
 
+The typed router maintains Express's familiar API while adding type safety. Here's a complete example showing both server and client usage:
 
-Elevating the mern stack:
+```typescript
+// Server-side route definition
+import { TypedRouter } from "express-ts/router"
 
-For better or worse, the mern stacks ease of use and lack of solid design opinions made it the most accesible stack for js devs to build full web applications. It goes without saying that scaling a MERN stack codebase, like scaling a raw javascript codebase, is extremely difficult. Typescript solves many of the codebase scalablilty of javasript but it's full power is lost on the MERN stack. mongoDB's lack of schema enforcment make types unreiable at best and dangerously misleading at worst.
+const router = new TypedRouter()
 
-That being said, mongooses types have come a long way and e2e typesaftey can be enfored via validators. THis helps example repo is how i would recomend structuring your MERN typescript app.
+// Define a type-safe route
+.get<{
+  params: { id: string },
+  query: { order?: "desc" | "asc" },
+  body: any,
+  response: User
+}>('/users/:id', async (req, res) => {
+  const { id } = req.params; // fully typed
+  const { fields } = req.query; // typed as string[] | undefined
+
+  const user = await getUser(id, fields);
+  return res.json(user);
+});
+
+// Client-side consumption
+import axios from 'axios';
+import { createAPIClient } from 'express-ts-client';
+
+const axiosInstance = axios.create({ baseURL: 'http://localhost:3000' });
+const apiClient = createAPIClient<typeof router>(axiosInstance);
+
+// Type-safe API calls
+const user = await apiClient.users[':id'].get({
+  params: { id: '123' },
+  // expecting "decs" or "asc" you will get a type error!
+  query: { limit: "aasc" }
+}); // user is fully typed!
+```
+
+## Type Generation
+
+For large APIs, we recommend:
+1. Exporting router types for client-side consumption
+2. Generating `.d.ts` files for improved IDE performance
+3. Creating separate typed clients for different sections of your API
+
+## Example Application
+
+This repository includes a reference implementation demonstrating:
+- Typed Router integration
+- PostgreSQL with PGlite for development
+- Drizzle ORM for type-safe database access
+- Best practices for structuring a modern Express/TypeScript monorepo
+
+## Caveats
+
+While the library aims to provide comprehensive type safety, there are some limitations due to working within Express's type system. These are documented in detail in our [Caveats](./docs/caveats.md) section.
+
+## When to Use This
+
+- You have a legacy Express application and want to add type safety incrementally
+- You need to maintain Express compatibility while improving the developer experience
+- You're looking for a stepping stone toward more modern frameworks like Hono
+
+For new projects, we recommend considering modern alternatives like Hono or Fastify that provide better TypeScript support out of the box.
+
+## License
+
+MIT
