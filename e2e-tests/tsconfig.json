@@ -1,5 +1,5 @@
 {
-  "extends": "@typed-router/tsconfig/base.json",
+  "extends": "@express-ts/tsconfig/base.json",
   "compilerOptions": {
     "target": "ES6",
     "useDefineForClassFields": true,

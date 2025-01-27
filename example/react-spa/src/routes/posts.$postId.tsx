@@ -1,10 +1,10 @@
-import type { NewPost } from "@typed-router/shared-lib/schema";
-import type { ErrorComponentProps } from "@tanstack/react-router";
-import * as React from "react";
+import type { NewPost } from "@express-ts/shared-lib/schema";
+import { insertPostSchema } from "@express-ts/shared-lib/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryErrorResetBoundary, useSuspenseQuery } from "@tanstack/react-query";
+import type { ErrorComponentProps } from "@tanstack/react-router";
 import { createFileRoute, ErrorComponent } from "@tanstack/react-router";
-import { insertPostSchema } from "@typed-router/shared-lib/schema";
+import * as React from "react";
 import { useForm } from "react-hook-form";
 
 import { deletePost, PostNotFoundError } from "../clientAPI/posts";

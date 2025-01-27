@@ -1,5 +1,5 @@
 {
-  "name": "@typed-router/tsup-config",
+  "name": "@express-ts/tsup-config",
   "description": "Shared tsup configuration to be used across packages. Use this for building internal libs",
   "private": true,
   "version": "0.1.0",
@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
-    "@typed-router/tsconfig": "workspace:*",
+    "@express-ts/tsconfig": "workspace:*",
     "@types/node": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@typed-router/prettier-config"
+  "prettier": "@express-ts/prettier-config"
 }

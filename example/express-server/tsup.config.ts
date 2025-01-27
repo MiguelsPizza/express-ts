@@ -18,7 +18,7 @@ export default defineConfig({
   },
   tsconfig: "./tsconfig.json",
   // you'll want to replace this wil the name of your monorepo if you are using this example
-  noExternal: Object.keys(packageJSON.dependencies).filter((dep) => dep.includes("@typed-router")),
+  noExternal: Object.keys(packageJSON.dependencies).filter((dep) => dep.includes("@express-ts")),
   esbuildOptions(options) {
     options.bundle = true;
     options.platform = "node";

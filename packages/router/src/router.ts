@@ -1,11 +1,11 @@
 /**
  * @fileoverview TypedRouter implementation for Express providing Hono-style type inference
- * @module typed-router
+ * @module express-ts
  */
 
-import type { HttpMethod, InferResponseType, TypedRequestHandler, TypedResponse, UpdateRouter } from "./types";
 import type { NextFunction, Request, RequestHandler, Response, RouterOptions } from "express";
 import { Router } from "express";
+import type { HttpMethod, InferResponseType, TypedRequestHandler, TypedResponse, UpdateRouter } from "./types";
 
 /**
  * Creates a new TypedResponse instance wrapping an Express Response

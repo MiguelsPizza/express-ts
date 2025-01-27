@@ -1,9 +1,9 @@
-import * as path from "node:path";
-import type { PgliteDatabase } from "drizzle-orm/pglite";
 import { PGlite } from "@electric-sql/pglite";
-import * as schema from "@typed-router/shared-lib/schema";
+import * as schema from "@express-ts/shared-lib/schema";
+import type { PgliteDatabase } from "drizzle-orm/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
+import * as path from "node:path";
 
 export type DB = PgliteDatabase<typeof schema> & {
   $client: PGlite;

@@ -1,5 +1,5 @@
 {
-  "name": "@typed-router/e2e-tests",
+  "name": "@express-ts/e2e-tests",
   "version": "1.0.0",
   "description": "",
   "packageManager": "pnpm@10.0.0",
@@ -16,9 +16,9 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
     "@playwright/test": "^1.46.1",
-    "@typed-router/eslint-config": "workspace:*",
-    "@typed-router/prettier-config": "workspace:*",
-    "@typed-router/tsconfig": "workspace:*",
+    "@express-ts/eslint-config": "workspace:*",
+    "@express-ts/prettier-config": "workspace:*",
+    "@express-ts/tsconfig": "workspace:*",
     "@types/node": "^20.14.11",
     "@typescript-eslint/eslint-plugin": "^8.2.0",
     "@typescript-eslint/parser": "^8.2.0",
@@ -29,7 +29,7 @@
     "typescript": "catalog:",
     "pnpm": "10.0.0"
   },
-  "prettier": "@typed-router/prettier-config",
+  "prettier": "@express-ts/prettier-config",
   "dependencies": {
     "vitest": "^2.0.5"
   }

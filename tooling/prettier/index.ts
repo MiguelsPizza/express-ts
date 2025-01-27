@@ -10,7 +10,7 @@ const config = {
     "<TYPES>^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
     "<TYPES>^(next/(.*)$)|^(next$)",
     "<TYPES>^(expo(.*)$)|^(expo$)",
-    "<TYPES>^@typed-router",
+    "<TYPES>^@express-ts",
     "<TYPES>.*",
     "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
     "^(next/(.*)$)|^(next$)",

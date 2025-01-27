@@ -1,17 +1,17 @@
 # Typed Router Client
 
-This package provides a type-safe client for consuming routes defined by the [TypedRouter](../typed-router).
+This package provides a type-safe client for consuming routes defined by the [TypedRouter](../express-ts).
 It uses Axios under the hood to perform HTTP requests, automatically mapping route definitions from the server to a friendly, typed client API.
 
 ## Installation
 
 ```bash
-npm install typed-router-client
+npm install express-ts-client
 ```
 
 ## Usage
 
-1. Define your routes with the TypedRouter on the server (see the typed-router package).
+1. Define your routes with the TypedRouter on the server (see the express-ts package).
 2. Import createAPIClient from this package.
 3. Pass in an Axios instance, and you can begin calling your routes as typed functions.
 
@@ -20,7 +20,7 @@ Example:
 ```typescript
 import axios from 'axios';
 import { type UserRouter } from 'location_of_typeof_your_typedRouter'
-import createAPIClient from 'typed-router-client';
+import createAPIClient from 'express-ts-client';
 const axiosInstance = axios.create({ baseURL: 'http://localhost:3000' })
 const apiClient = createAPIClient<RouterType>(axiosInstance);
 

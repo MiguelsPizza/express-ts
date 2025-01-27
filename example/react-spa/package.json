@@ -1,5 +1,5 @@
 {
-  "name": "@typed-router/react-spa",
+  "name": "@express-ts/react-spa",
   "private": true,
   "type": "module",
   "scripts": {
@@ -19,8 +19,8 @@
     "@tanstack/react-router": "^1.97.17",
     "@tanstack/router-devtools": "^1.97.17",
     "@tanstack/router-plugin": "^1.97.17",
-    "@typed-router/client": "workspace:*",
-    "@typed-router/express-server": "workspace:*",
+    "@express-ts/client": "workspace:*",
+    "@express-ts/express-server": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.54.2",
@@ -29,11 +29,11 @@
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
-    "@typed-router/eslint-config": "workspace:*",
-    "@typed-router/prettier-config": "workspace:*",
-    "@typed-router/shared-lib": "workspace:*",
-    "@typed-router/tsconfig": "workspace:*",
-    "@typed-router/tsup-config": "workspace:*",
+    "@express-ts/eslint-config": "workspace:*",
+    "@express-ts/prettier-config": "workspace:*",
+    "@express-ts/shared-lib": "workspace:*",
+    "@express-ts/tsconfig": "workspace:*",
+    "@express-ts/tsup-config": "workspace:*",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@vitejs/plugin-react": "^4.3.4",
@@ -44,5 +44,5 @@
     "vite": "^6.0.3",
     "vitest": "^2.0.5"
   },
-  "prettier": "@typed-router/prettier-config"
+  "prettier": "@express-ts/prettier-config"
 }

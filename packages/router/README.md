@@ -13,13 +13,13 @@ A TypeScript-first router for Express that provides Hono-style type inference. G
 ## Installation
 
 ```bash
-npm install typed-router-express
+npm install express-ts-express
 ```
 
 ## Quick Start
 
 ```typescript
-import { TypedRouter } from "typed-router-express";
+import { TypedRouter } from "express-ts-express";
 
 const router = new TypedRouter();
 

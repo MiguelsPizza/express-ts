@@ -1,5 +1,5 @@
-import baseConfig from "@typed-router/eslint-config/base";
-import reactConfig from "@typed-router/eslint-config/react";
+import baseConfig from "@express-ts/eslint-config/base";
+import reactConfig from "@express-ts/eslint-config/react";
 
 export default [
   {

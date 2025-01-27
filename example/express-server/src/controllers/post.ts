@@ -1,6 +1,6 @@
-import type { NewPost, Post } from "@typed-router/shared-lib/schema";
-import { TypedRouter } from "@typed-router/router";
-import { insertPostSchema, posts } from "@typed-router/shared-lib/schema";
+import { TypedRouter } from "@express-ts/router";
+import type { NewPost, Post } from "@express-ts/shared-lib/schema";
+import { insertPostSchema, posts } from "@express-ts/shared-lib/schema";
 import { asc, desc, eq } from "drizzle-orm";
 import { z } from "zod";
 
