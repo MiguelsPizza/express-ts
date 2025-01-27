@@ -29,6 +29,9 @@ jobs:
           run_install: true
           version: 10.0.0
 
+      - name: Build repo
+        run: pnpm build
+
       - name: Run Linter
         run: pnpm lint
 

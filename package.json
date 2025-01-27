@@ -5,7 +5,7 @@
   "packageManager": "pnpm@10.0.0",
   "scripts": {
     "dev": "turbo run dev --filter=@express-ts-rpc/react-spa --filter=@express-ts-rpc/express-server",
-    "build": "turbo run build --filter=!@express-ts-rpc/e2e-tests",
+    "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "turbo run format",
     "test": "turbo run test",
