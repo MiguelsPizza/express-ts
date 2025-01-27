@@ -1,7 +1,7 @@
 import type { HttpMethod, TypedRouter } from "@express-ts/router";
+import type { AllRoutes, MapRoutesToClient } from "./types";
 import type { AxiosInstance } from "axios";
 import type axiosLight from "redaxios";
-import type { AllRoutes, MapRoutesToClient } from "./types";
 
 type RedaxiosInstance = ReturnType<(typeof axiosLight)["create"]>;
 
