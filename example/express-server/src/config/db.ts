@@ -1,19 +1,49 @@
-import "dotenv/config";
+import { PGlite } from "@electric-sql/pglite";
+import { drizzle, PgliteDatabase } from 'drizzle-orm/pglite';
+import { migrate } from "drizzle-orm/pglite/migrator";
+import * as path from 'node:path';
+import * as schema from '../models/index';
+import { posts } from '../models/post';
 
-import type { PostObject } from "@typed-router/shared-lib/model-types";
-import type mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
+export type DB = PgliteDatabase<typeof schema> & {
+  $client: PGlite;
+};
 
-import { Post } from "../models/post";
 
-export async function setUpTestDatabase(mongooseConnection: typeof mongoose): Promise<void> {
-  const mongoServer = await MongoMemoryServer.create();
-  const mongoUri = mongoServer.getUri();
-  await mongooseConnection.connect(mongoUri);
-  await seedDatabase();
+export class Database {
+  static instance: DB;
+
+  private constructor() { } // Prevent direct construction
+
+  static async initialize() {
+    if (this.instance) {
+      return this.instance;
+    }
+
+    try {
+      const client = new PGlite();
+      const db = drizzle({ client, schema });
+
+      // Run migrations
+      await migrate(db, {
+        migrationsFolder: path.join(__dirname, "drizzle"),
+      });
+
+      // Seed database in development/test
+      if (process.env.NODE_ENV !== 'production') {
+        await seedDatabase(db);
+      }
+
+      this.instance = db;
+      return this.instance;
+    } catch (error) {
+      console.error('Failed to initialize database:', error);
+      throw error;
+    }
+  }
 }
 
-const demoPosts: Omit<PostObject, "_id" | "createdAt" | "updatedAt">[] = [
+const demoPosts: schema.NewPost[] = [
   {
     title: "First Demo Post",
     body: "This is the content of our first demo post.",
@@ -26,12 +56,11 @@ const demoPosts: Omit<PostObject, "_id" | "createdAt" | "updatedAt">[] = [
     title: "Third Demo Post",
     body: "And here's one more post to demonstrate the app.",
   },
-];
+] as const;
 
-export async function seedDatabase(): Promise<void> {
+async function seedDatabase(db: ReturnType<typeof drizzle>) {
   try {
-    await Post.insertMany(demoPosts);
-
+    await db.insert(posts).values(demoPosts);
     console.log("Database seeded successfully");
   } catch (error) {
     console.error("Error seeding database:", error);

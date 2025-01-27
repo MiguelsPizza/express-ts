@@ -1,5 +1,4 @@
 {
-
   "compilerOptions": {
     "outDir": "dist",
     "lib": ["ESNext"],
@@ -10,7 +9,7 @@
     "noEmit": true,
     "noUncheckedIndexedAccess": false,
     "jsx": "react",
-    "module": "Preserve",
+    "module": "ESNext",
     // Add these performance-focused options
     // "incremental": true,
     "skipLibCheck": true,
@@ -28,12 +27,11 @@
 
     // Remove if not needed for your project
     "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "composite": true
   },
 
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.js",
-    "src/**/*.jsx"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "exclude": ["dist", "node_modules"]
 }

@@ -87,3 +87,5 @@ apps/server/node_modules
 tooling/prettier/dist
 example/react-spa/node_modules
 example/shared-lib/node_modules
+example/express-server/src/config/drizzle
+example/express-server/.tsup

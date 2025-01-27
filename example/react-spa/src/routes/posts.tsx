@@ -14,18 +14,19 @@ function PostsComponent() {
   return (
     <div className="p-2 flex gap-2">
       <ul className="list-disc pl-4">
-        {posts.map((post) => {
+        {posts.map(({ id, title }) => {
+
           return (
-            <li key={post._id.toString()} className="whitespace-nowrap">
+            <li key={id} className="whitespace-nowrap">
               <Link
                 to="/posts/$postId"
                 params={{
-                  postId: post._id.toString(),
+                  postId: id.toString(),
                 }}
                 className="block py-1 text-blue-600 hover:opacity-75"
                 activeProps={{ className: "font-bold underline" }}
               >
-                <div>{post.title.substring(0, 20)}</div>
+                <div>{title.substring(0, 20)}</div>
               </Link>
             </li>
           );

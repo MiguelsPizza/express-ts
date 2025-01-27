@@ -1,6 +1,6 @@
 import { createAPIClient } from "@typed-router/client";
-import type { PostRouter } from "@typed-router/express-server/post";
 
+import { NewPost, PostRouter } from "@typed-router/express-server";
 import axiosInstance from "../axiosInstance";
 
 export class PostNotFoundError extends Error {}
@@ -28,5 +28,34 @@ export const fetchPosts = async () => {
     },
     body: undefined,
     params: {},
+  });
+};
+
+
+
+export const createPost = async (newPost: NewPost) => {
+  console.info("Creating new post...");
+  return postsClient.posts.post({
+    body: newPost,
+    query: undefined,
+    params: {},
+  });
+};
+
+export const updatePost = async (postId: string, updatedPost: NewPost) => {
+  console.info(`Updating post with id ${postId}...`);
+  return postsClient.posts[":postId"].put({
+    params: { postId },
+    body: updatedPost,
+    query: undefined,
+  });
+};
+
+export const deletePost = async (postId: string) => {
+  console.info(`Deleting post with id ${postId}...`);
+  return postsClient.posts[":postId"].delete({
+    params: { postId },
+    query: undefined,
+    body: undefined,
   });
 };

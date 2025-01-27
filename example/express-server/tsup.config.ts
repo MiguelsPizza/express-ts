@@ -2,17 +2,19 @@ import { defineConfig } from "tsup";
 import packageJSON from "./package.json";
 
 export default defineConfig({
-  entry: ["./src/index.ts", "./src/controllers/post.ts"],
+  entry: ["./src/index.ts"],
   format: ["cjs"],
-  target: "node2023",
+  target: "node2024",
   platform: "node",
   sourcemap: true,
   clean: true,
-  treeshake: true,
-  minify: true,
-  bundle: true,
-  dts: true,
+  treeshake: false,
+  minify: false,
+  bundle: false,
   outDir: "./dist",
+  experimentalDts: {
+    entry: "./src/index.ts"
+  },
   tsconfig: "./tsconfig.json",
   // you'll want to replace this wil the name of your monorepo if you are using this example
   noExternal: Object.keys(packageJSON.dependencies).filter(dep => dep.includes("@typed-router")),
