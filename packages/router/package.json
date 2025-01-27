@@ -1,10 +1,10 @@
 {
-  "name": "@express-ts/router",
+  "name": "@express-ts-rpc/router",
   "version": "0.1.0",
   "description": "Type-safe Express router with Hono-style type inference",
-  "homepage": "https://github.com/MiguelsPizza/express-ts#readme",
+  "homepage": "https://github.com/MiguelsPizza/express-ts-rpc#readme",
   "bugs": {
-    "url": "https://github.com/MiguelsPizza/express-ts/issues"
+    "url": "https://github.com/MiguelsPizza/express-ts-rpc/issues"
   },
   "type": "module",
   "main": "./dist/index.cjs",
@@ -42,16 +42,16 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MiguelsPizza/express-ts"
+    "url": "https://github.com/MiguelsPizza/express-ts-rpc"
   },
   "peerDependencies": {
     "express": "^5.0.0"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "catalog:",
-    "@express-ts/eslint-config": "workspace:*",
-    "@express-ts/prettier-config": "workspace:*",
-    "@express-ts/tsconfig": "workspace:*",
+    "@express-ts-rpc/eslint-config": "workspace:*",
+    "@express-ts-rpc/prettier-config": "workspace:*",
+    "@express-ts-rpc/tsconfig": "workspace:*",
     "@types/express": "^5.0.0",
     "@types/express-serve-static-core": "^5.0.1",
     "@types/node": "catalog:",
@@ -61,7 +61,7 @@
     "tsup": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@express-ts/prettier-config",
+  "prettier": "@express-ts-rpc/prettier-config",
   "publishConfig": {
     "access": "public"
   }

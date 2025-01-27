@@ -1,6 +1,6 @@
-import type { PostRouter } from "@express-ts/express-server";
-import type { NewPost } from "@express-ts/shared-lib/schema";
-import { createAPIClient } from "@express-ts/client";
+import type { PostRouter } from "@express-ts-rpc/express-server";
+import type { NewPost } from "@express-ts-rpc/shared-lib/schema";
+import { createAPIClient } from "@express-ts-rpc/client";
 
 import axiosInstance from "../axiosInstance";
 

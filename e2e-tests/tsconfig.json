@@ -1,5 +1,5 @@
 {
-  "extends": "@express-ts/tsconfig/base.json",
+  "extends": "@express-ts-rpc/tsconfig/base.json",
   "compilerOptions": {
     "target": "ES6",
     "useDefineForClassFields": true,

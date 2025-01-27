@@ -1,7 +1,7 @@
 import * as path from "node:path";
 import type { PgliteDatabase } from "drizzle-orm/pglite";
 import { PGlite } from "@electric-sql/pglite";
-import * as schema from "@express-ts/shared-lib/schema";
+import * as schema from "@express-ts-rpc/shared-lib/schema";
 import { drizzle } from "drizzle-orm/pglite";
 import { migrate } from "drizzle-orm/pglite/migrator";
 

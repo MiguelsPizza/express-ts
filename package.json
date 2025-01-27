@@ -1,11 +1,11 @@
 {
-  "name": "express-ts",
+  "name": "express-ts-rpc",
   "version": "1.0.0",
   "private": true,
   "packageManager": "pnpm@10.0.0",
   "scripts": {
-    "dev": "turbo run dev --filter=@express-ts/react-spa --filter=@express-ts/express-server",
-    "build": "turbo run build --filter=!@express-ts/e2e-tests",
+    "dev": "turbo run dev --filter=@express-ts-rpc/react-spa --filter=@express-ts-rpc/express-server",
+    "build": "turbo run build --filter=!@express-ts-rpc/e2e-tests",
     "lint": "turbo run lint",
     "format": "turbo run format",
     "test": "turbo run test",
@@ -17,7 +17,7 @@
     "pnpm": "^10.0.0"
   },
   "devDependencies": {
-    "@express-ts/prettier-config": "workspace:*",
+    "@express-ts-rpc/prettier-config": "workspace:*",
     "eslint": "catalog:",
     "jiti": "^2.4.2",
     "prettier": "catalog:",
@@ -25,7 +25,7 @@
     "tsx": "4.19.2",
     "typescript": "catalog:"
   },
-  "prettier": "@express-ts/prettier-config",
+  "prettier": "@express-ts-rpc/prettier-config",
   "dependencies": {
     "@changesets/cli": "^2.27.12",
     "dotenv": "^16.4.5",

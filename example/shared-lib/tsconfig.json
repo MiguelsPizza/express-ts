@@ -1,5 +1,5 @@
 {
-  "extends": "@express-ts/tsconfig/internal-package.json",
+  "extends": "@express-ts-rpc/tsconfig/internal-package.json",
   "compilerOptions": {
     "outDir": "./dist",
     "declarationMap": true

@@ -1,6 +1,6 @@
 /**
  * @fileoverview TypedRouter implementation for Express providing Hono-style type inference
- * @module express-ts
+ * @module express-ts-rpc
  */
 
 import type { HttpMethod, InferResponseType, TypedRequestHandler, TypedResponse, UpdateRouter } from "./types";

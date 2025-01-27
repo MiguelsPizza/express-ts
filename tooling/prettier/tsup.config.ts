@@ -1,4 +1,4 @@
-import baseConfig from "@express-ts/tsup-config";
+import baseConfig from "@express-ts-rpc/tsup-config";
 import { defineConfig } from "tsup";
 
 export default defineConfig({

@@ -1,4 +1,4 @@
-import type { HttpMethod, TypedRouter } from "@express-ts/router";
+import type { HttpMethod, TypedRouter } from "@express-ts-rpc/router";
 import type { AllRoutes, MapRoutesToClient } from "./types";
 import type { AxiosInstance } from "axios";
 import type axiosLight from "redaxios";

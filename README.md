@@ -22,7 +22,7 @@ The typed router maintains Express's familiar API while adding type safety. Here
 
 ```typescript
 // Server-side route definition
-import { TypedRouter } from "express-ts/router"
+import { TypedRouter } from "express-ts-rpc/router"
 
 const router = new TypedRouter()
 
@@ -42,7 +42,7 @@ const router = new TypedRouter()
 
 // Client-side consumption
 import axios from 'axios';
-import { createAPIClient } from 'express-ts-client';
+import { createAPIClient } from 'express-ts-rpc-client';
 
 const axiosInstance = axios.create({ baseURL: 'http://localhost:3000' });
 const apiClient = createAPIClient<typeof router>(axiosInstance);

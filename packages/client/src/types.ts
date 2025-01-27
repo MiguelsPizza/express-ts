@@ -1,4 +1,4 @@
-import type { ExtractPathParams, TypedRouter } from "@express-ts/router";
+import type { ExtractPathParams, TypedRouter } from "@express-ts-rpc/router";
 
 // Define the complex type utilities here
 export type HttpMethod = "get" | "post" | "put" | "delete" | "patch";

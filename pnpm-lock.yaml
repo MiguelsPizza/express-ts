@@ -48,7 +48,7 @@ importers:
         specifier: ^2.3.3
         version: 2.3.4
     devDependencies:
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:tooling/prettier
       eslint:
@@ -82,13 +82,13 @@ importers:
       '@playwright/test':
         specifier: ^1.46.1
         version: 1.50.0
-      '@express-ts/eslint-config':
+      '@express-ts-rpc/eslint-config':
         specifier: workspace:*
         version: link:../tooling/eslint
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:../tooling/prettier
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../tooling/typescript
       '@types/node':
@@ -127,16 +127,16 @@ importers:
       '@microsoft/api-extractor':
         specifier: ^7.49.1
         version: 7.49.1(@types/node@22.10.10)
-      '@express-ts/router':
+      '@express-ts-rpc/router':
         specifier: workspace:*
         version: link:../../packages/router
-      '@express-ts/shared-lib':
+      '@express-ts-rpc/shared-lib':
         specifier: workspace:*
         version: link:../shared-lib
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@express-ts/tsup-config':
+      '@express-ts-rpc/tsup-config':
         specifier: workspace:*
         version: link:../../tooling/tsup
       '@zodyac/zod-mongoose':
@@ -191,10 +191,10 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/eslint-config':
+      '@express-ts-rpc/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
       '@types/compression':
@@ -242,10 +242,10 @@ importers:
       '@tanstack/router-plugin':
         specifier: ^1.97.17
         version: 1.97.17(@tanstack/react-router@1.97.17(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(vite@6.0.11(@types/node@22.10.10)(jiti@2.4.2)(tsx@4.19.2))
-      '@express-ts/client':
+      '@express-ts-rpc/client':
         specifier: workspace:*
         version: link:../../packages/client
-      '@express-ts/express-server':
+      '@express-ts-rpc/express-server':
         specifier: workspace:*
         version: link:../express-server
       react:
@@ -267,19 +267,19 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/eslint-config':
+      '@express-ts-rpc/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
-      '@express-ts/shared-lib':
+      '@express-ts-rpc/shared-lib':
         specifier: workspace:*
         version: link:../shared-lib
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@express-ts/tsup-config':
+      '@express-ts-rpc/tsup-config':
         specifier: workspace:*
         version: link:../../tooling/tsup
       '@types/react':
@@ -325,13 +325,13 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/eslint-config':
+      '@express-ts-rpc/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/node':
@@ -349,7 +349,7 @@ importers:
 
   packages/client:
     dependencies:
-      '@express-ts/router':
+      '@express-ts-rpc/router':
         specifier: workspace:*
         version: link:../router
       express:
@@ -359,13 +359,13 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/eslint-config':
+      '@express-ts-rpc/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/express':
@@ -408,13 +408,13 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/eslint-config':
+      '@express-ts-rpc/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/express':
@@ -502,10 +502,10 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/prettier-config':
+      '@express-ts-rpc/prettier-config':
         specifier: workspace:*
         version: link:../prettier
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../typescript
       '@types/eslint-plugin-security':
@@ -539,10 +539,10 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../typescript
-      '@express-ts/tsup-config':
+      '@express-ts-rpc/tsup-config':
         specifier: workspace:*
         version: link:../tsup
       '@types/node':
@@ -561,7 +561,7 @@ importers:
       '@ianvs/prettier-plugin-sort-imports':
         specifier: 'catalog:'
         version: 4.4.1(prettier@3.4.2)
-      '@express-ts/tsconfig':
+      '@express-ts-rpc/tsconfig':
         specifier: workspace:*
         version: link:../typescript
       '@types/node':
