@@ -1,7 +1,7 @@
 import type { Config } from 'drizzle-kit';
 
 export default {
-  schema: './src/models/index.ts',
+  schema: '../shared-lib/src/schema/index.ts',
   out: './src/config/drizzle/',
   dialect: 'postgresql',
   driver: 'pglite',

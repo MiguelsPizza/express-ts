@@ -1,6 +1,7 @@
 import { createAPIClient } from "@typed-router/client";
 
-import { NewPost, PostRouter } from "@typed-router/express-server";
+import { PostRouter } from "@typed-router/express-server";
+import { NewPost } from "@typed-router/shared-lib/schema";
 import axiosInstance from "../axiosInstance";
 
 export class PostNotFoundError extends Error {}
@@ -20,7 +21,6 @@ export const fetchPost = async (postId: string) => {
 
 export const fetchPosts = async () => {
   console.info("Fetching posts...");
-  await new Promise((r) => setTimeout(r, 500));
   return postsClient.posts.get({
     query: {
       sort: "desc",
@@ -31,31 +31,32 @@ export const fetchPosts = async () => {
   });
 };
 
-
-
 export const createPost = async (newPost: NewPost) => {
   console.info("Creating new post...");
-  return postsClient.posts.post({
+  const response = await postsClient.posts.post({
     body: newPost,
     query: undefined,
     params: {},
   });
+  return response;
 };
 
 export const updatePost = async (postId: string, updatedPost: NewPost) => {
   console.info(`Updating post with id ${postId}...`);
-  return postsClient.posts[":postId"].put({
+  const response = await postsClient.posts[":postId"].put({
     params: { postId },
     body: updatedPost,
     query: undefined,
   });
+  return response;
 };
 
 export const deletePost = async (postId: string) => {
   console.info(`Deleting post with id ${postId}...`);
-  return postsClient.posts[":postId"].delete({
+  const response = await postsClient.posts[":postId"].delete({
     params: { postId },
     query: undefined,
     body: undefined,
   });
+  return response;
 };

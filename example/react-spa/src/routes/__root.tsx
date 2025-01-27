@@ -1,5 +1,4 @@
 import type { QueryClient } from "@tanstack/react-query";
-import * as React from "react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createRootRouteWithContext, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
@@ -38,23 +37,6 @@ function RootComponent() {
           }}
         >
           Posts
-        </Link>{" "}
-        <Link
-          to="/layout-a"
-          activeProps={{
-            className: "font-bold",
-          }}
-        >
-          Layout
-        </Link>{" "}
-        <Link
-          // @ts-expect-error
-          to="/this-route-does-not-exist"
-          activeProps={{
-            className: "font-bold",
-          }}
-        >
-          This Route Does Not Exist
         </Link>
       </div>
       <hr />

@@ -1,9 +1,8 @@
 import { PGlite } from "@electric-sql/pglite";
+import * as schema from "@typed-router/shared-lib/schema";
 import { drizzle, PgliteDatabase } from 'drizzle-orm/pglite';
 import { migrate } from "drizzle-orm/pglite/migrator";
 import * as path from 'node:path';
-import * as schema from '../models/index';
-import { posts } from '../models/post';
 
 export type DB = PgliteDatabase<typeof schema> & {
   $client: PGlite;
@@ -60,7 +59,7 @@ const demoPosts: schema.NewPost[] = [
 
 async function seedDatabase(db: ReturnType<typeof drizzle>) {
   try {
-    await db.insert(posts).values(demoPosts);
+    await db.insert(schema.posts).values(demoPosts);
     console.log("Database seeded successfully");
   } catch (error) {
     console.error("Error seeding database:", error);

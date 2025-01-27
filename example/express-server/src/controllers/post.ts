@@ -1,9 +1,9 @@
 import { TypedRouter } from "@typed-router/router";
+import { insertPostSchema, posts, type NewPost, type Post } from "@typed-router/shared-lib/schema";
 import { asc, desc, eq } from 'drizzle-orm';
 import { z } from "zod";
 import { Database } from "../config/db";
 import { zValidator } from "../middleware/zValidator";
-import { insertPostSchema, posts, type NewPost, type Post } from "../models/post";
 import { AppError } from "../util/appError";
 
 export const postQuery = z.object({

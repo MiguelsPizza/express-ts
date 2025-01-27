@@ -1,5 +1,0 @@
-{
-  "model_path": "../express-server/src/models",
-  "output": "./src/types/model-types",
-  "project": "./tsconfig.json"
-}

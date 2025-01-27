@@ -2,6 +2,8 @@ import { NextFunction, Request, RequestHandler, Response } from 'express';
 import { z, ZodError, ZodObject, ZodSchema } from 'zod';
 import { AppError } from '../util/appError';
 
+// feel free to drop this in your project and use with your own Error class or preferred validation library
+
 /**
  * Express-oriented version of the "Hook" type:
  * Receives the parse result (success or failure) plus
@@ -86,8 +88,6 @@ export function zValidator<
         throw new AppError("Zod Error: Validation failed", 400, Object.groupBy(result.error.errors, (error) => error.code));
       }
 
-      // If successful, store the parsed data back on the request (overwriting that portion).
-      (req as any)[target] = result.data;
       return next();
     } catch (err) {
       // Pass unexpected errors to the next error handler
