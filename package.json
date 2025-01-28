@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "turbo run dev --filter=@express-ts-rpc/react-spa --filter=@express-ts-rpc/express-server",
     "build": "turbo run build",
+    "start-example-app": "turbo run dev --filter=@express-ts-rpc/react-spa --filter=@express-ts-rpc/express-server",
     "lint": "turbo run lint",
     "format": "turbo run format",
     "test": "turbo run test",

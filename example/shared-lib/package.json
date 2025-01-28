@@ -3,23 +3,27 @@
   "private": true,
   "version": "0.1.0",
   "exports": {
+    ".": "./package.json",
     "./schema": {
       "types": "./dist/src/schema/index.d.ts",
       "import": "./dist/src/schema/index.js",
       "default": "./src/schema/index.ts"
-    }
+    },
+    "./drizzle": "./drizzle"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "pnpm generate && tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc --watch",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "generate": "drizzle-kit generate"
   },
   "dependencies": {
     "drizzle-orm": "^0.38.4",
     "drizzle-zod": "^0.6.1",
+    "drizzle-kit": "^0.30.3",
     "zod": "^3.24.1"
   },
   "devDependencies": {

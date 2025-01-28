@@ -25,7 +25,7 @@ export class Database {
 
       // Run migrations
       await migrate(db, {
-        migrationsFolder: path.join(__dirname, "drizzle"),
+        migrationsFolder: path.join(path.dirname(require.resolve("@express-ts-rpc/shared-lib")), "drizzle"),
       });
 
       // Seed database in development/test

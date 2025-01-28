@@ -8,15 +8,14 @@
     }
   },
   "scripts": {
-    "start": "pnpm generate && pnpm build && node dist/index.js",
-    "dev": "pnpm generate && tsx watch ./src/index.ts",
+    "start": "pnpm build && node dist/index.js",
+    "dev": "tsx watch ./src/index.ts",
     "dev-debug": "tsx watch --inspect ./server.ts",
     "build": "tsup-node --tsconfig ./tsconfig.json",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "clean": "git clean -xdf .cache dist .coverage .turbo node_modules",
     "lint": "node --max-old-space-size=8192 ../../node_modules/eslint/bin/eslint.js",
-    "typecheck": "tsc --noEmit",
-    "generate": "drizzle-kit generate"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.2.16",
