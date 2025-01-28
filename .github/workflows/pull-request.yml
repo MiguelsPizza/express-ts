@@ -36,11 +36,21 @@ jobs:
         run: pnpm lint
 
       - name: Check types
-        run: pnpm lint
+        run: pnpm typecheck
 
-      - name: Install Dependencies
-        run: pnpm install
+      - name: Install Playwright Browsers
+        working-directory: ./e2e-tests
+        run: pnpm exec playwright install --with-deps
 
       - name: Run Tests
         run: pnpm test
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: e2e-tests/playwright-report/
+          retention-days: 30
+
+
 
